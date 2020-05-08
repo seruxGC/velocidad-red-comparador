@@ -10,14 +10,20 @@ import app.interfaces.ComparacionVelocidadStrategy;
 
 public class VelocidadRedComparador {
 
-
     private VelocidadRedComparador() {
         throw new IllegalStateException("Utility class");
     }
 
-    public static boolean compara(String velocidadRed1, String velocidadRed2) {   
-        ComparacionVelocidadStrategy  comparacionVelocidadStrategy = escogeEstrategia(velocidadRed1);
-        return comparacionVelocidadStrategy.compara(velocidadRed1, velocidadRed2);
+    public static boolean compara(String velocidadRed1, String velocidadRed2) {
+
+        ComparacionVelocidadStrategy estrategiaVelocidad1 = escogeEstrategia(velocidadRed1);
+        ComparacionVelocidadStrategy estrategiaVelocidad2 = escogeEstrategia(velocidadRed2);
+
+        if (!sonVelocidadesMismoFormato(estrategiaVelocidad1, estrategiaVelocidad2)) {
+            throw new IllegalArgumentException("las velocidades comparadas no tienen el mismo formato");
+        }
+
+        return estrategiaVelocidad1.compara(velocidadRed1, velocidadRed2);
     }
 
     private static ComparacionVelocidadStrategy escogeEstrategia(String unidadVelocidad) {
@@ -39,9 +45,15 @@ public class VelocidadRedComparador {
 
     }
 
+    private static boolean sonVelocidadesMismoFormato(ComparacionVelocidadStrategy estrategiaVelocidad1,
+            ComparacionVelocidadStrategy estrategiaVelocidad2) {
+        return estrategiaVelocidad1.getClass().getCanonicalName()
+                .equals(estrategiaVelocidad2.getClass().getCanonicalName());
+    }
 
     /**
      * Formato 1
+     * 
      * @param velocidadRed Formato "Acceso VPN IP 1000M/1000M"
      * @return
      */
@@ -55,7 +67,9 @@ public class VelocidadRedComparador {
 
     /**
      * Formato 2
-     * @param velocidadRed Formato "100M-500M" Soporta las unidades M, G (megabits,gigabis)
+     * 
+     * @param velocidadRed Formato "100M-500M" Soporta las unidades M, G
+     *                     (megabits,gigabis)
      * @return
      */
     private static boolean tieneFormato2(String velocidadRed) {
@@ -68,7 +82,9 @@ public class VelocidadRedComparador {
 
     /**
      * Formato 3
-     * @param velocidadRed Formato "2 Mbps" soporta las unidades Kbps, Mbps, Gbps y los numeros en decimales.
+     * 
+     * @param velocidadRed Formato "2 Mbps" soporta las unidades Kbps, Mbps, Gbps y
+     *                     los numeros en decimales.
      * @return
      */
     private static boolean tieneFormato3(String velocidadRed) {
@@ -78,6 +94,5 @@ public class VelocidadRedComparador {
 
         return matcher.matches();
     }
-
 
 }

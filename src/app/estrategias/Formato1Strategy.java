@@ -21,7 +21,7 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
         Matcher matcher2 = pattern.matcher(velocidadRed2);
 
         if (!matcher1.find() || !matcher2.find()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Error en el formato de la velocidad");
         }
             int velBajada1 = Integer.parseInt(matcher1.group(1));
             int velSubida1 = Integer.parseInt(matcher1.group(2));
