@@ -22,7 +22,7 @@ Clase de utilidad para comparar velocidades de red. Las velocidades tienen que e
 (\d+).??(Mbps|Gbps|M|G).*?(\/|\-).*?(\d+).??(Mbps|Gbps|M|G)
 
 Se puede probar en: <br>
-(https://regex101.com/)
+https://regex101.com
 
  En este formato se considera que la ***velocidad1*** es mayor que la ***velocidad2*** cuando la velocidad **de bajada y subida** **es mayor** que la de la ***velocidad2***.
 
