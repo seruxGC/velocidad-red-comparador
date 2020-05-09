@@ -10,7 +10,7 @@
  - [unidad] literal que puede tener un valor de 'M' o 'G' (megabits o gigabits)
  - [separador] puede ser el carácter '-' o '/'
 
-Ejemplos de velocidades válidas con este formato:
+Ejemplos de velocidades válidas con este formato: <br>
 "**100M-100M**" <br>
 "**100G-100G**" <br>
 "**100G/100M**" <br>
