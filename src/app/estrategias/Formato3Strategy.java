@@ -4,7 +4,7 @@ import app.interfaces.ComparacionVelocidadStrategy;
 
 /**
  * Formato 3
- * "2 Mbps" soporta las unidades Kbps, Mbps, Gbps y los numeros en decimales.
+ * "2 Mbps" soporta las unidades Kbps, Mbps, Gbps y los numeros en decimales con puntos y comas.
  */
 public class Formato3Strategy implements ComparacionVelocidadStrategy {
 

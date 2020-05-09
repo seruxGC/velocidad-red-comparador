@@ -6,8 +6,9 @@ import java.util.regex.Pattern;
 import app.interfaces.ComparacionVelocidadStrategy;
 
 /**
- * Formato 1
- *  "Acceso VPN IP 1000M/1000M"
+ * Formato 1 
+ * "Acceso VPN IP 1000M/1000M" 
+ * Acceso VPN IP FTTH0 100M/50M SIN VOZ
  */
 public class Formato1Strategy implements ComparacionVelocidadStrategy {
 
