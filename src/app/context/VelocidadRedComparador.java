@@ -7,29 +7,15 @@ import java.util.regex.Pattern;
 
 import app.estrategias.Formato1Strategy;
 import app.estrategias.Formato2Strategy;
-import app.estrategias.Formato3Strategy;
 import app.interfaces.ComparacionVelocidadStrategy;
 
 public class VelocidadRedComparador {
 
-    // Formato 1
-    private static final String REGEX_FORMATO_1 = "Acceso VPN IP .*";
-    private static final Pattern PATRON_FORMATO_1 = Pattern.compile(REGEX_FORMATO_1);
-
-    // Formato 2
-    private static final String REGEX_FORMATO_2 = "\\b\\d+(M|G)?(\\/|-)\\d+(M|G)?\\b";
-    private static final Pattern PATRON_FORMATO_2 = Pattern.compile(REGEX_FORMATO_2);
-
-    // Formato 3
-    private static final String REGEX_FORMATO_3 = "^[1-9]\\d*((\\.\\d+)?|(,\\d+)?) (Kbps|Mbps|Gbps)$";
-    private static final Pattern PATRON_FORMATO_3 = Pattern.compile(REGEX_FORMATO_3);
-
     private HashMap<Pattern, ComparacionVelocidadStrategy> mapaEstrategias = new HashMap<>();
 
     public VelocidadRedComparador() {
-        mapaEstrategias.put(PATRON_FORMATO_1, new Formato1Strategy());
-        mapaEstrategias.put(PATRON_FORMATO_2, new Formato2Strategy());
-        mapaEstrategias.put(PATRON_FORMATO_3, new Formato3Strategy());
+        mapaEstrategias.put(Formato1Strategy.PATTERN, new Formato1Strategy());
+        mapaEstrategias.put(Formato2Strategy.PATTERN, new Formato2Strategy());
     }
 
     /**
@@ -57,8 +43,8 @@ public class VelocidadRedComparador {
 
     /**
      * Busca en el mapa de estrategias si hay alguna que cumple con uno de los
-     * patrones implementados y en caso de que lo encuentre devuelve la estrategia a
-     * utilizar
+     * patrones de velocidad implementados y en caso de que lo encuentre devuelve la
+     * estrategia a utilizar
      * 
      * @param velocidadRed
      * @return Devuelve la estrategia a utilizar o IllegalArgumentException en caso
@@ -70,7 +56,7 @@ public class VelocidadRedComparador {
             Pattern patron = estrategia.getKey();
             Matcher matcher = patron.matcher(velocidadRed);
 
-            if (matcher.matches()) {
+            if (matcher.find()) {
                 return estrategia.getValue();
             }
         }
