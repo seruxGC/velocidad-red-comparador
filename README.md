@@ -9,7 +9,7 @@ Clase de utilidad para comparar velocidades de red. Las velocidades tienen que e
  Pertenece a este formato cualquier literal que contenga una velocidad de red especificada de la siguiente manera: <br> 
  "**[velocidadBajada][unidad][separador][velocidadSubida][unidad]**"
  
- - [velocidadBajada] y  [velocidadSubida] son un numeros entero 
+ - [velocidadBajada] y  [velocidadSubida] son un numeros enteros o decimales. En caso de ser decimales pueden usar comas o puntos.
  - [unidad] literal que puede tener un valor de 'Mbps', 'Gbps', 'M' o 'G' (megabits o gigabits)
  - [separador] puede ser el carácter '-' o '/'
 
