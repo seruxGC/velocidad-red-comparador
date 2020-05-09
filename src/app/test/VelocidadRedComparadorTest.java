@@ -187,6 +187,32 @@ public class VelocidadRedComparadorTest {
 		Assert.assertTrue(resultado);
 	}
 
+	@Test
+	/**
+	 * Velocidad1 > velocidad2 literales distintos
+	 */
+	public void formato1LiteralesDistintosTest() {
+		VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+		String velocidadRed1 = "Acceso VPN IP FTTH 200 250M/250M 200 SIN VOZ";
+		String velocidadRed2 = "200M/200M";
+
+		boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+		Assert.assertTrue(resultado);
+	}
+
+	@Test
+	/**
+	 * Velocidad1 < Velocidad2 literales distintos 
+	 */
+	public void formato1LiteralesDistintosTest2() {
+		VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+		String velocidadRed1 = "Acceso VPN IP 100M/1000M";
+		String velocidadRed2 = "Adsl 200M-200M Fibra 2.0";
+
+		boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+		Assert.assertFalse(resultado);
+	}
+
 
 
 
