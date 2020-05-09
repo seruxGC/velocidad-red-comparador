@@ -1,5 +1,7 @@
 # Comparador de velocidades de red
+
 **Descripcion**
+
 Clase de utilidad para comparar velocidades en distintos formatos.
 
 ## Formatos reconocidos
