@@ -15,7 +15,7 @@ public class Formato2Strategy implements ComparacionVelocidadStrategy {
     private static final char GIGABITS = 'G';
     private static final short MULTIPLO_VELOCIDADES = 1000;
 
-    private static final Pattern patronVelocidad = Pattern.compile("(\\d+)(.)-(\\d+)(.)");
+    private static final Pattern patronVelocidad = Pattern.compile("(\\d+)(.).(\\d+)(.)");
 
     @Override
     public  boolean compara(String velocidadRed1, String velocidadRed2) {

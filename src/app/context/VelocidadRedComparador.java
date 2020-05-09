@@ -17,7 +17,7 @@ public class VelocidadRedComparador {
     private static final Pattern PATRON_FORMATO_1 = Pattern.compile(REGEX_FORMATO_1);
 
     // Formato 2
-    private static final String REGEX_FORMATO_2 = "\\b\\d+(M|G)?-\\d+(M|G)?\\b";
+    private static final String REGEX_FORMATO_2 = "\\b\\d+(M|G)?(\\/|-)\\d+(M|G)?\\b";
     private static final Pattern PATRON_FORMATO_2 = Pattern.compile(REGEX_FORMATO_2);
 
     // Formato 3
