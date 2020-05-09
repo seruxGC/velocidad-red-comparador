@@ -4,16 +4,10 @@
 
 Clase de utilidad para comparar velocidades de red. Las velocidades tienen que estar en el mismo formato para poder compararse.
 
-## Resumen de formatos reconocidos
-
-- Formato 1: **"[numero][unidad][separador][numero][unidad]"** Ejemplos:  "100M-100M"  , "50G/50G"  ,  "50M-50G" ,  "Fibra Adsl 10G-5G" , "[4G-4G]" , {30M/30M}
-
-- Formato 2: **"[numero] [unidad]"** Ejemplos:  "40 Kbps"  "10 Kbps"  "1 Gbps"  "2,5 Gbps"   "2.5 Gbps"
-
  ##  Formato 1
  
  Pertenece a este formato cualquier literal que contenga una velocidad de red especificada de la siguiente manera: <br> 
- "[velocidadBajada][unidad][separador][velocidadSubida][unidad]"
+ "**[velocidadBajada][unidad][separador][velocidadSubida][unidad]**"
  
  - [velocidadBajada] y  [velocidadSubida] son un numeros entero 
  - [unidad] literal que puede tener un valor de 'Mbps', 'Gbps', 'M' o 'G' (megabits o gigabits)
