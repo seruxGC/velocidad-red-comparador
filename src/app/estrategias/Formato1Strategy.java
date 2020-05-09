@@ -12,7 +12,7 @@ import app.interfaces.ComparacionVelocidadStrategy;
  */
 public class Formato1Strategy implements ComparacionVelocidadStrategy {
 
-    private static final String REGEX_FORMATO = "(\\d+)(M|G)(\\/|-)(\\d+)(M|G)";
+    private static final String REGEX_FORMATO = "(\\d+)(M|G).*?(\\/|\\-).*?(\\d+)(M|G)";
     public static final Pattern PATTERN = Pattern.compile(REGEX_FORMATO);
 
     private static final char MEGABITS = 'M';

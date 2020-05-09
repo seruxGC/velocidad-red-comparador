@@ -109,6 +109,28 @@ public class VelocidadRedComparadorTest {
 	}
 
 	@Test
+	/** Velocidad1 > velocidad2 Velocidades en gigas */
+	public void formato1CorchetesTest() {
+		VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+		String velocidadRed1 = "{10G/10G}";
+		String velocidadRed2 = "{1G/1G}";
+
+		boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+		Assert.assertTrue(resultado);
+	}
+
+	@Test
+	/** Velocidad1 > velocidad2 Velocidades en gigas */
+	public void formato1LlavesTest() {
+		VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+		String velocidadRed1 = "[10G/10G]";
+		String velocidadRed2 = "[1G/1G]";
+
+		boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+		Assert.assertTrue(resultado);
+	}
+
+	@Test
 	/** Velocidad1 < velocidad2 Velocidades en gigas */
 	public void formato1ExactoTest10() {
 		VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
