@@ -47,3 +47,4 @@ Ejemplo:
     comparador.compara("Acceso VPN IP 100M/1000M", "Adsl 200M-200M Fibra 2.0"); // False
  
  
+ ##  Formato 2
