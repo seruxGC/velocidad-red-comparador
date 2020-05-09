@@ -6,17 +6,18 @@ import java.util.regex.Pattern;
 import app.interfaces.ComparacionVelocidadStrategy;
 
 /**
- * Formato 2 "100M-500M" "100G/500M" Soporta las unidades M, G
- * (megabits,gigabis) , los separadores de la velocidad de bajada y subida
- * pueden ser "-" o "/"
+ * Formato 1
+ * https://github.com/seruxGC/velocidad-red-comparador/blob/master/README.md#formato-1
  */
 public class Formato1Strategy implements ComparacionVelocidadStrategy {
 
-    private static final String REGEX_FORMATO = "(\\d+)(M|G).*?(\\/|\\-).*?(\\d+)(M|G)";
+    private static final String REGEX_FORMATO = "(\\d+).??(Mbps|Gbps|M|G).*?(\\/|\\-).*?(\\d+).??(Mbps|Gbps|M|G)";
     public static final Pattern PATTERN = Pattern.compile(REGEX_FORMATO);
 
-    private static final char MEGABITS = 'M';
-    private static final char GIGABITS = 'G';
+    private static final String MEGABITS_SEGUNDO = "Mbps";
+    private static final String GIGABITS_SEGUNDO = "Gbps";
+    private static final String MEGABITS = "M";
+    private static final String GIGABITS = "G";
     private static final short MULTIPLO_VELOCIDADES = 1000;
 
     @Override
@@ -41,7 +42,7 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
         }
 
         float numeroVelocidad = obtenerNumeroVelocidadBajada(matcher);
-        char unidadVelocidad = obtenerUnidadVelocidadBajada(matcher);
+        String unidadVelocidad = obtenerUnidadVelocidadBajada(matcher);
 
         return calculaVelocidadMegabits(numeroVelocidad, unidadVelocidad);
     }
@@ -55,7 +56,7 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
         }
 
         float numeroVelocidad = obtenerNumeroVelocidadSubida(matcher);
-        char unidadVelocidad = obtenerUnidadVelocidaSubida(matcher);
+        String unidadVelocidad = obtenerUnidadVelocidaSubida(matcher);
 
         return calculaVelocidadMegabits(numeroVelocidad, unidadVelocidad);
     }
@@ -64,27 +65,30 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
         return Float.parseFloat(matcher.group(1));
     }
 
-    private static char obtenerUnidadVelocidadBajada(Matcher matcher) {
-        return matcher.group(2).charAt(0);
+    private static String obtenerUnidadVelocidadBajada(Matcher matcher) {
+        return matcher.group(2);
     }
 
     private static float obtenerNumeroVelocidadSubida(Matcher matcher) {
         return Float.parseFloat(matcher.group(4));
     }
 
-    private static char obtenerUnidadVelocidaSubida(Matcher matcher) {
-        return matcher.group(5).charAt(0);
+    private static String obtenerUnidadVelocidaSubida(Matcher matcher) {
+        return matcher.group(5);
     }
 
-    private static float calculaVelocidadMegabits(float numeroVelocidad, char unidadVelocidad) {
-        switch (unidadVelocidad) {
-            case MEGABITS:
-                return numeroVelocidad;
-            case GIGABITS:
-                return numeroVelocidad * MULTIPLO_VELOCIDADES;
-            default:
-                throw new IllegalArgumentException("Velocidad desconocida");
+    private static float calculaVelocidadMegabits(float numeroVelocidad, String unidadVelocidad) {
+
+        if (unidadVelocidad.equals(MEGABITS) || unidadVelocidad.equals(MEGABITS_SEGUNDO)) {
+            return numeroVelocidad;
         }
+
+        if (unidadVelocidad.equals(GIGABITS) || unidadVelocidad.equals(GIGABITS_SEGUNDO)) {
+            return numeroVelocidad * MULTIPLO_VELOCIDADES;
+        }
+
+        throw new IllegalArgumentException("Velocidad desconocida");
+
     }
 
 }

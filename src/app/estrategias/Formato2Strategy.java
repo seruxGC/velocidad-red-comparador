@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 import app.interfaces.ComparacionVelocidadStrategy;
 
 /**
- * Formato 3 "2 Mbps" soporta las unidades Kbps, Mbps, Gbps y los numeros en
- * decimales con puntos y comas.
+ * Formato 2
+ * https://github.com/seruxGC/velocidad-red-comparador/blob/master/README.md#formato-2
  */
 public class Formato2Strategy implements ComparacionVelocidadStrategy {
 
