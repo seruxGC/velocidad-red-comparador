@@ -18,7 +18,7 @@ Clase de utilidad para comparar velocidades de red. Las velocidades tienen que e
  - [unidad] literal que puede tener un valor de 'Mbps', 'Gbps', 'M' o 'G' (megabits o gigabits)
  - [separador] puede ser el carácter '-' o '/'
 
-El regex que utiliza para identificar la velocidad en este formato es: <br>
+**El regex que utiliza para identificar la velocidad en este formato es:** <br>
 (\d+).??(Mbps|Gbps|M|G).*?(\/|\-).*?(\d+).??(Mbps|Gbps|M|G)
 
 Se puede probar en: <br>
