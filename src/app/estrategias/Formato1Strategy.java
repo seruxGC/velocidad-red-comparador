@@ -11,7 +11,8 @@ import app.interfaces.ComparacionVelocidadStrategy;
  */
 public class Formato1Strategy implements ComparacionVelocidadStrategy {
 
-    private static final String REGEX_FORMATO = "(\\d+).??(Mbps|Gbps|M|G).*?(\\/|\\-).*?(\\d+).??(Mbps|Gbps|M|G)";
+    private static final String REGEX_FORMATO = "(\\d+[\\,\\.]??\\d?)\\s??(Mbps|Gbps|M|G).*?(\\/|\\-).*?(\\d+[\\,\\.]??\\d?).??(Mbps|Gbps|M|G)";
+
     public static final Pattern PATTERN = Pattern.compile(REGEX_FORMATO);
 
     private static final String MEGABITS_SEGUNDO = "Mbps";
@@ -61,16 +62,26 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
         return calculaVelocidadMegabits(numeroVelocidad, unidadVelocidad);
     }
 
+    /**
+     * Obtiene la velocidad de bajada del grupo de regex correspondiente y sustituye
+     * el caracter ',' por '.' para que en caso de que el decimal tenga una coma no
+     * de error al pasarlo a float
+     */
     private static float obtenerNumeroVelocidadBajada(Matcher matcher) {
-        return Float.parseFloat(matcher.group(1));
+        return Float.parseFloat(matcher.group(1).replace(",", "."));
     }
 
     private static String obtenerUnidadVelocidadBajada(Matcher matcher) {
         return matcher.group(2);
     }
 
+    /**
+     * Obtiene la velocidad de bajada del grupo de regex correspondiente y sustituye
+     * el caracter ',' por '.' para que en caso de que el decimal tenga una coma no
+     * de error al pasarlo a float
+     */
     private static float obtenerNumeroVelocidadSubida(Matcher matcher) {
-        return Float.parseFloat(matcher.group(4));
+        return Float.parseFloat(matcher.group(4).replace(",", "."));
     }
 
     private static String obtenerUnidadVelocidaSubida(Matcher matcher) {

@@ -299,4 +299,32 @@ public class Formato1Test {
         Assert.assertFalse(resultado);
     }
 
+
+
+
+    // Test velocidades con decimales
+
+
+    @Test
+    /** * Velocidad1 > velocidad2 */
+    public void formato1ConDecimalTest1() {
+        VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+        String velocidadRed1 = "[1,5 Gbps / 1,5 Gbps]";
+        String velocidadRed2 = "1.2 Gbps - 1.2 Gbps";
+
+        boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+    }
+
+    @Test
+    /** * Velocidad1 > velocidad2 */
+    public void formato1ConDecimalTest2() {
+        VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+        String velocidadRed1 = "{1,5 Gbps} - {1.5 Gbps}";
+        String velocidadRed2 = "{1499 Mbps} - {1499 Mbps}";
+
+        boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+    }
+
 }
