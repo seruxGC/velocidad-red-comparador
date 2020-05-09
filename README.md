@@ -7,6 +7,7 @@ Clase de utilidad para comparar velocidades de red. Las velocidades tienen que e
 ## Resumen de formatos reconocidos
 
 - Formato 1: **"[numero][unidad][separador][numero][unidad]"** Ejemplos:  "100M-100M"  , "50G/50G"  ,  "50M-50G" ,  "Fibra Adsl 10G-5G" , "[4G-4G]" , {30M/30M}
+
 - Formato 2: **"[numero] [unidad]"** Ejemplos:  "40 Kbps"  "10 Kbps"  "1 Gbps"  "2,5 Gbps"   "2.5 Gbps"
 
  ##  Formato 1
@@ -19,12 +20,12 @@ Clase de utilidad para comparar velocidades de red. Las velocidades tienen que e
  - [separador] puede ser el carácter '-' o '/'
 
 **El regex que utiliza para identificar la velocidad en este formato es:** <br>
-(\d+).??(Mbps|Gbps|M|G).*?(\/|\-).*?(\d+).??(Mbps|Gbps|M|G)
 
-Se puede probar en: <br>
-https://regex101.com
+    (\d+).??(Mbps|Gbps|M|G).*?(\/|\-).*?(\d+).??(Mbps|Gbps|M|G)
 
- En este formato se considera que la ***velocidad1*** es mayor que la ***velocidad2*** cuando la velocidad **de bajada y subida** **es mayor** que la de la ***velocidad2***.
+Se puede probar en:  https://regex101.com
+
+ En este formato se considera que la ***velocidad1*** es mayor que la ***velocidad2*** cuando  **la velocidad de bajada y subida** **es mayor** que la de la ***velocidad2***.
 
 Ejemplo:
 
