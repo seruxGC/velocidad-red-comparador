@@ -56,7 +56,7 @@ public class VelocidadRedComparador {
             Pattern patron = estrategia.getKey();
             Matcher matcher = patron.matcher(velocidadRed);
 
-            if (matcher.find()) {
+            if (matcher.matches()) {
                 return estrategia.getValue();
             }
         }
