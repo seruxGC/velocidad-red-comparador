@@ -131,15 +131,60 @@ public class Formato1Test {
     }
 
     @Test
-    /** Velocidad1 < velocidad2 Velocidades en gigas */
+    /** Velocidad1 > velocidad2 Velocidades en kilobits */
     public void formato1ExactoTest10() {
         VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
-        String velocidadRed1 = "10G/10G";
-        String velocidadRed2 = "15G/2G";
+        String velocidadRed1 = "15K/15K";
+        String velocidadRed2 = "10K/10K";
 
         boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
-        Assert.assertFalse(resultado);
+        Assert.assertTrue(resultado);
+        
     }
+
+    @Test
+    /** Velocidad1 > velocidad2 Velocidades en kilobits */
+    public void formato1ExactoTest11() {
+        VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+        String velocidadRed1 = "15 K / 15 K";
+        String velocidadRed2 = "10 K / 10 K";
+
+        boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+
+    }
+
+    @Test
+    /** Velocidad1 > velocidad2 Velocidades en kilobits megas*/
+    public void formato1ExactoTest12() {
+        VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+        String velocidadRed1 = "1 M - 1 M";
+        String velocidadRed2 = "999 K - 999 K";
+
+        boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+
+    }
+
+    @Test
+    /** Velocidad1 > velocidad2 Velocidades en kilobits gigas */
+    public void formato1ExactoTest13() {
+        VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+        String velocidadRed1 = "1000001 K - 1000001 K";
+        String velocidadRed2 = "1 G - 1 G";
+
+        boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+
+    }
+
+
+
+
+
+
+
+
 
     /** Test Fotmato 1 literal velocidad contenido en otro mayor */
 
@@ -238,6 +283,10 @@ public class Formato1Test {
         Assert.assertFalse(resultado);
     }
 
+
+
+
+
     // Test Unidades segundo
 
     @Test
@@ -299,6 +348,54 @@ public class Formato1Test {
         Assert.assertFalse(resultado);
     }
 
+    @Test
+    /** Velocidad1 > velocidad2 Velocidades en kilobits */
+    public void formato1UnidadesSegundoTes6() {
+        VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+        String velocidadRed1 = "15Kbps/15Kbps";
+        String velocidadRed2 = "10Kbps/10Kbps";
+
+        boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+
+    }
+
+    @Test
+    /** Velocidad1 > velocidad2 Velocidades en kilobits */
+    public void formato1UnidadesSegundoTest7() {
+        VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+        String velocidadRed1 = "15 Kbps / 15 Kbps";
+        String velocidadRed2 = "10 Kbps / 10 Kbps";
+
+        boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+
+    }
+
+    @Test
+    /** Velocidad1 > velocidad2 Velocidades en kilobits megas */
+    public void formato1UnidadesSegundoTest8() {
+        VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+        String velocidadRed1 = "1 M - 1 M";
+        String velocidadRed2 = "999 Kbps - 999 Kbps";
+
+        boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+
+    }
+
+    @Test
+    /** Velocidad1 > velocidad2 Velocidades en kilobits gigas */
+    public void formato1UnidadesSegundoTest9() {
+        VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+        String velocidadRed1 = "1000001 Kbps - 1000001 Kbps";
+        String velocidadRed2 = "1 G - 1 G";
+
+        boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+
+    }
+
 
 
 
@@ -321,6 +418,17 @@ public class Formato1Test {
     public void formato1ConDecimalTest2() {
         VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
         String velocidadRed1 = "{1,5 Gbps} - {1.5 Gbps}";
+        String velocidadRed2 = "{1499 Mbps} - {1499 Mbps}";
+
+        boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+    }
+
+    @Test
+    /** * Velocidad1 > velocidad2 */
+    public void formato1ConDecimalTest3() {
+        VelocidadRedComparador velocidadRedComparador = new VelocidadRedComparador();
+        String velocidadRed1 = "{1,55 Gbps} - {1.55 Gbps}";
         String velocidadRed2 = "{1499 Mbps} - {1499 Mbps}";
 
         boolean resultado = velocidadRedComparador.compara(velocidadRed1, velocidadRed2);

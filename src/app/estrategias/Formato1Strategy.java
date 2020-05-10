@@ -11,16 +11,18 @@ import app.interfaces.ComparacionVelocidadStrategy;
  */
 public class Formato1Strategy implements ComparacionVelocidadStrategy {
 
-    // private static final String REGEX_FORMATO = "(\\d+[\\,\\.]??\\d?)\\s??(Mbps|Gbps|M|G).*?(\\/|\\-).*?(\\d+[\\,\\.]??\\d?).??(Mbps|Gbps|M|G)";
-    private static final String REGEX_FORMATO = ".*?(\\d+[\\,\\.]??\\d?)\\s??(Mbps|Gbps|M|G).*?(\\/|\\-).*?(\\d+[\\,\\.]??\\d?).??(Mbps|Gbps|M|G).*";
+    private static final String REGEX_FORMATO = ".*?(\\d+[\\,\\.]??\\d*?)\\s??(Kbps|Mbps|Gbps|K|M|G).*?(\\/|\\-).*?(\\d+[\\,\\.]??\\d?).??(Kbps|Mbps|Gbps|K|M|G).*";
 
     public static final Pattern PATTERN = Pattern.compile(REGEX_FORMATO);
 
+    private static final String KILOBITS_SEGUNDO = "Kbps";
     private static final String MEGABITS_SEGUNDO = "Mbps";
     private static final String GIGABITS_SEGUNDO = "Gbps";
+    private static final String KILOBITS = "K";
     private static final String MEGABITS = "M";
     private static final String GIGABITS = "G";
     private static final short MULTIPLO_VELOCIDADES = 1000;
+    
 
     @Override
     public boolean compara(String velocidadRed1, String velocidadRed2) {
@@ -90,6 +92,10 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
     }
 
     private static float calculaVelocidadMegabits(float numeroVelocidad, String unidadVelocidad) {
+        
+        if(unidadVelocidad.equals(KILOBITS) || unidadVelocidad.equals(KILOBITS_SEGUNDO)) {
+            return numeroVelocidad / MULTIPLO_VELOCIDADES;
+        }
 
         if (unidadVelocidad.equals(MEGABITS) || unidadVelocidad.equals(MEGABITS_SEGUNDO)) {
             return numeroVelocidad;
