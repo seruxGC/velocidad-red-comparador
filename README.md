@@ -9,13 +9,13 @@ Clase de utilidad para comparar velocidades de red. Las velocidades tienen que e
  Pertenece a este formato cualquier literal que contenga una velocidad de red especificada de la siguiente manera: <br> 
  "**[velocidadBajada][unidad][separador][velocidadSubida][unidad]**"
  
- - [velocidadBajada] y  [velocidadSubida] son un numeros entero 
- - [unidad] literal que puede tener un valor de 'Mbps', 'Gbps', 'M' o 'G' (megabits o gigabits)
+ - [velocidadBajada] y [velocidadSubida] son numeros enteros o decimales. En caso de ser decimales pueden usar comas o puntos.
+ - [unidad] literal que puede tener un valor de 'Kbps', 'Mbps', 'Gbps','K', 'M' o 'G' (kilobits/segundo, megabits/segundo o gigabits/segundo)
  - [separador] puede ser el carácter '-' o '/'
 
 **El regex que utiliza para identificar la velocidad en este formato es:** <br>
 
-    (\d+).??(Mbps|Gbps|M|G).*?(\/|\-).*?(\d+).??(Mbps|Gbps|M|G)
+    .*?(\d+[\,\.]??\d*?)\s??(Kbps|Mbps|Gbps|K|M|G).*?(\/|\-).*?(\d+[\,\.]??\d?).??(Kbps|Mbps|Gbps|K|M|G).*
 
 Se puede probar en:  https://regex101.com
 
