@@ -24,12 +24,12 @@ Clase de utilidad para comparar velocidades de red. Las velocidades tienen que e
 
     .*?(\d+[\,\.]??\d*?)\s??(Kbps|Mbps|Gbps|K|M|G).*?(\/|\-).*?(\d+[\,\.]??\d?).??(Kbps|Mbps|Gbps|K|M|G).*
 
-Ejemplos de velocidades en este formato:  
-"[100Kbps-100Kbps]"
-"1 Gbps - 2 Mbps"
-"50G/50K"
-"{1499 Mbps} - {1499 Mbps}"
-"Acceso VPN IP 1000M-1000M"
+Ejemplos de velocidades en este formato:    <br>
+"[100Kbps-100Kbps]"  <br>
+"1 Gbps - 2 Mbps"  <br>
+"50G/50K"  <br>
+"{1499 Mbps} - {1499 Mbps}"  <br>
+"Acceso VPN IP 1000M-1000M"  <br>
 
 Las combinaciones validas de este formato son muchas. Se puede probar diferentes variantes de este formato en:  https://regex101.com . El literal cumplira este formato si en los grupos 1 y 4 del regex están las velocidades, en los grupos 2 y 5 las unidades y en el grupo 3 el separador.
 
@@ -74,12 +74,12 @@ Pertenece a este formato cualquier literal que contenga una velocidad de red esp
 
     ^[\[,\{]?(\d+[\,\.]?\d*?)\s?\-?\s?(Kbps|Mbps|Gbps)[\},\]]?$
 
-Ejemplos de velocidades en este formato:  
-"[1.58-Mbps]"
-"1001 - Kbps"
-"15,5 Kbps"
-"150Gbps"
-{150 Gbps}
+Ejemplos de velocidades en este formato:  <br>
+"[1.58-Mbps]"  <br>
+"1001 - Kbps"  <br>
+"15,5 Kbps"  <br>
+"150Gbps"  <br>
+{150 Gbps}  
 
 Las combinaciones validas de este formato son muchas. Se puede probar diferentes variantes de este formato en:  https://regex101.com . El literal cumplira este formato si en el grupo 1 está la velocidad y en el grupo 2 está la unidad.
 
@@ -94,6 +94,6 @@ Ejemplos:
     
     comparador.compara("1 Gbps", "500 Mbps); // true
 
-	comparador.compara("{1Gbps}", "2 Gbps); // false
+    comparador.compara("{1Gbps}", "2 Gbps); // false
 
-	comparador.compara("[1 Gbps]", "[1,5 Gbps]; // false
+    comparador.compara("[1 Gbps]", "[1,5 Gbps]; // false
