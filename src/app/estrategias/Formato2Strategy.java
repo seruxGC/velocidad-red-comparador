@@ -1,5 +1,6 @@
 package app.estrategias;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.interfaces.ComparacionVelocidadStrategy;
@@ -10,7 +11,7 @@ import app.interfaces.ComparacionVelocidadStrategy;
  */
 public class Formato2Strategy implements ComparacionVelocidadStrategy {
 
-    private static final String REGEX_FORMATO = "^[1-9]\\d*((\\.\\d+)?|(,\\d+)?) (Kbps|Mbps|Gbps)$";
+    private static final String REGEX_FORMATO = "^[\\[,\\{]?(\\d+[\\,\\.]?\\d*?)\\s?\\-?\\s?(Kbps|Mbps|Gbps)[\\},\\]]?$";
     public static final Pattern PATTERN = Pattern.compile(REGEX_FORMATO);
 
     private static final String KILOBITS_SEGUNDO = "Kbps";
@@ -30,38 +31,33 @@ public class Formato2Strategy implements ComparacionVelocidadStrategy {
 
     private float velocidadEnMegabits(String velocidadRed) {
 
-        String unidadVelocidad = obtenerUnidadVelocidad(velocidadRed);
+        Matcher matcher = PATTERN.matcher(velocidadRed);
+
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("La velocidad de red '" + velocidadRed + "' no es valida");
+        }
+
+        String unidadVelocidad = obtenerUnidadVelocidad(matcher);
 
         switch (unidadVelocidad) {
             case KILOBITS_SEGUNDO:
-                return obtenerNumeroVelocidad(velocidadRed) / MULTIPLO_VELOCIDADES;
+                return obtenerNumeroVelocidad(matcher) / MULTIPLO_VELOCIDADES;
             case MEGABITS_SEGUNDO:
-                return obtenerNumeroVelocidad(velocidadRed);
+                return obtenerNumeroVelocidad(matcher);
             case GIBABITS_SEGUNDO:
-                return obtenerNumeroVelocidad(velocidadRed) * MULTIPLO_VELOCIDADES;
+                return obtenerNumeroVelocidad(matcher) * MULTIPLO_VELOCIDADES;
             default:
                 throw new IllegalArgumentException("Velocidad desconocida");
         }
 
     }
 
-    private static float obtenerNumeroVelocidad(String velocidadRed) {
-
-        String[] partesVelocidadRed = velocidadRed.split(" ");
-        String velocidadStr = partesVelocidadRed[0];
-
-        velocidadStr = velocidadStr.replace(",", ".").trim();
-
-        try {
-            return Float.parseFloat(velocidadStr);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("La velocidad de red '" + velocidadRed + "' no es valida");
-        }
+    private static float obtenerNumeroVelocidad(Matcher matcher) {
+        return Float.parseFloat(matcher.group(1).replace(",", "."));
     }
 
-    private static String obtenerUnidadVelocidad(String velocidadRed) {
-        String[] partesVelocidadRed = velocidadRed.split(" ");
-        return partesVelocidadRed[1].replace(".", " ").trim();
+    private static String obtenerUnidadVelocidad(Matcher matcher) {
+      return matcher.group(2);
     }
 
 }
