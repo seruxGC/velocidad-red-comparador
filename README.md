@@ -38,20 +38,16 @@ Las combinaciones validas de este formato son muchas. Se puede probar diferentes
 Devuelve  `true` si la velocidad **de bajada y subida** de la *velocidad1*  es mayor que la de la *velocidad2* y `false` en caso contrario.
 
 Ejemplo:
-
-    VelocidadRedComparador comparador = new VelocidadRedComparador();
     
-    comparador.compara("Adsl 10G/10G", "Adsl 5G/5G"); // true
+    VelocidadRedComparador.compara("Adsl 10G/10G", "Adsl 5G/5G"); // true
     
-    comparador.compara("Adsl 10G/10G", "Adsl 5G/10G"); // false
+    VelocidadRedComparador.compara("Adsl 10G/10G", "Adsl 5G/10G"); // false
     
  Como el algoritmo que se utiliza para la comparación de las velocidades en este formato ignora los literales que no correspondan a la velocidad de la red se pueden comparar literales mientras la velocidad tenga este formato.
  
-    VelocidadRedComparador comparador = new VelocidadRedComparador();
+    VelocidadRedComparador.compara("VPN IP FTTH 2.0 [250Mbps-250Mbps]", "200M-200M"); // true
     
-    comparador.compara("VPN IP FTTH 2.0 [250Mbps-250Mbps]", "200M-200M"); // true
-    
-    comparador.compara("VPN IP 100 Gbps-1000 Gbps", "Adsl 200 Gbps-200 Gbps Fibra 2.0"); // false
+    VelocidadRedComparador.compara("VPN IP 100 Gbps-1000 Gbps", "Adsl 200 Gbps-200 Gbps Fibra 2.0"); // false
  
  
  ###  Formato 2
@@ -88,12 +84,10 @@ Devuelve  `true` si la *velocidad1*  es mayor que la de la *velocidad2* y `false
 
 Ejemplos:
 
-    VelocidadRedComparador comparador = new VelocidadRedComparador();
+    VelocidadRedComparador.compara("150 Mbps", "100 Mbps"); // True
     
-    comparador.compara("150 Mbps", "100 Mbps"); // True
-    
-    comparador.compara("1 Gbps", "500 Mbps); // true
+    VelocidadRedComparador.compara("1 Gbps", "500 Mbps); // true
 
-    comparador.compara("{1Gbps}", "2 Gbps); // false
+    VelocidadRedComparador.compara("{1Gbps}", "2 Gbps); // false
 
-    comparador.compara("[1 Gbps]", "[1,5 Gbps]; // false
+    VelocidadRedComparador.compara("[1 Gbps]", "[1,5 Gbps]; // false
