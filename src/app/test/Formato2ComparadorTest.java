@@ -194,5 +194,49 @@ public class Formato2ComparadorTest {
         boolean resultado = VelocidadRedComparador.primeraVelocidadEsMayor(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
+
+    @Test
+    /** Velocidad = velocidad2*/
+    public void formato2VelocidadesIgualesTest1() {
+
+        String velocidadRed1 = "{1,1 - Gbps}";
+        String velocidadRed2 = "{1.1 - Gbps}";
+
+        boolean resultado = VelocidadRedComparador.velocidadesSonIguales(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+    }
+
+    @Test
+    /** Velocidad = velocidad2 */
+    public void formato2VelocidadesIgualesTest2() {
+
+        String velocidadRed1 = "100 - Mbps";
+        String velocidadRed2 = "100 - Mbps";
+
+        boolean resultado = VelocidadRedComparador.velocidadesSonIguales(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+    }
+
+    @Test
+    /** Velocidad != velocidad2 */
+    public void formato2VelocidadesIgualesTest3() {
+
+        String velocidadRed1 = "100 Mbps";
+        String velocidadRed2 = "100 Kbps";
+
+        boolean resultado = VelocidadRedComparador.velocidadesSonIguales(velocidadRed1, velocidadRed2);
+        Assert.assertFalse(resultado);
+    }
+
+    @Test
+    /** Velocidad != velocidad2 */
+    public void formato2VelocidadesIgualesTest4() {
+
+        String velocidadRed1 = "101 Mbps";
+        String velocidadRed2 = "100 Mbps";
+
+        boolean resultado = VelocidadRedComparador.velocidadesSonIguales(velocidadRed1, velocidadRed2);
+        Assert.assertFalse(resultado);
+    }
     
 }

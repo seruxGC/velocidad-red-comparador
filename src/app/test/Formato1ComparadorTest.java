@@ -435,4 +435,49 @@ public class Formato1ComparadorTest {
         Assert.assertTrue(resultado);
     }
 
+    @Test
+    /** * Velocidad1 = velocidad2 */
+    public void formato1VelocidadesIgualesTest1() {
+
+        String velocidadRed1 = "{1,55 Gbps} - {1.55 Gbps}";
+        String velocidadRed2 = "{1.55 Gbps} - {1.55 Gbps}";
+
+        boolean resultado = VelocidadRedComparador.velocidadesSonIguales(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+    }
+
+    @Test
+    /** * Velocidad1 = velocidad2 */
+    public void formato1VelocidadesIgualesTest2() {
+
+        String velocidadRed1 = "[11,5 Gbps / 11,5 Gbps]";
+        String velocidadRed2 = "[11,5 G / 11,5 G]";
+
+        boolean resultado = VelocidadRedComparador.velocidadesSonIguales(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+    }
+
+    @Test
+    /** * Velocidad1 = velocidad2 */
+    public void formato1VelocidadesIgualesTest3() {
+
+        String velocidadRed1 = "Acceso VPN IP FTTH 100M/500M SIN VOZ";
+        String velocidadRed2 = "VPN IP ADSL 100Mbps/500Mbps SIN VOZ";
+
+        boolean resultado = VelocidadRedComparador.velocidadesSonIguales(velocidadRed1, velocidadRed2);
+        Assert.assertTrue(resultado);
+    }
+
+    @Test
+    /** * Velocidad1 != velocidad2 */
+    public void formato1VelocidadesIgualesTest4() {
+
+        String velocidadRed1 = "1 Kbps - 1 Kbps";
+        String velocidadRed2 = "1 Kbps - 2 Kbps";
+
+        boolean resultado = VelocidadRedComparador.velocidadesSonIguales(velocidadRed1, velocidadRed2);
+        Assert.assertFalse(resultado);
+    }
+
+
 }
