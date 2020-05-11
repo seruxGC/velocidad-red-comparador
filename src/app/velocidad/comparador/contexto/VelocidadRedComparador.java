@@ -32,16 +32,12 @@ public class VelocidadRedComparador {
     }
 
     public static boolean primeraVelocidadEsMayor(String velocidadRed1, String velocidadRed2) {
-
         ComparacionVelocidadStrategy estrategiaVelocidad = escogeEstrategia(velocidadRed1, velocidadRed2);
-
         return estrategiaVelocidad.primeraVelocidadEsMayor(velocidadRed1, velocidadRed2);
     }
 
     public static boolean velocidadesSonIguales(String velocidadRed1, String velocidadRed2) {
-
         ComparacionVelocidadStrategy estrategiaVelocidad = escogeEstrategia(velocidadRed1, velocidadRed2);
-
         return estrategiaVelocidad.velocidadesSonIguales(velocidadRed1, velocidadRed2);
     }
 

@@ -11,7 +11,7 @@ import app.velocidad.comparador.interfaces.ComparacionVelocidadStrategy;
  */
 public class Formato1Strategy implements ComparacionVelocidadStrategy {
 
-    private static final String REGEX_FORMATO = ".*?(\\d+[\\,\\.]??\\d*?)\\s??(Kbps|Mbps|Gbps|K|M|G).*?(\\/|\\-).*?(\\d+[\\,\\.]??\\d?).??(Kbps|Mbps|Gbps|K|M|G).*";
+    private static final String REGEX_FORMATO = ".*?(\\d+[\\,\\.]??\\d*?)\\s??(Kbps|Mbps|Gbps|K|M|G).*?(\\/|\\-).*?(\\d+[\\,\\.]??\\d?)\\s??(Kbps|Mbps|Gbps|K|M|G).*";
 
     public static final Pattern PATTERN = Pattern.compile(REGEX_FORMATO);
 

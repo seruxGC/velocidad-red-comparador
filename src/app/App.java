@@ -1,7 +1,5 @@
 package app;
 
-import app.velocidad.comparador.contexto.VelocidadRedComparador;
-
 public class App {
     public static void main(String[] args) {
 
