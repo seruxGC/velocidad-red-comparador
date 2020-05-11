@@ -31,7 +31,7 @@ Ejemplos de velocidades en este formato:    <br>
 "{1499 Mbps} - {1499 Mbps}"  <br>
 "Acceso VPN IP 1000M-1000M"  <br>
 
-Las combinaciones validas de este formato son muchas. Se puede probar diferentes variantes de este formato en:  https://regex101.com . El literal cumplira este formato si en los grupos 1 y 4 del regex están las velocidades, en los grupos 2 y 5 las unidades y en el grupo 3 el separador.
+Las combinaciones validas de este formato son muchas. Se puede probar diferentes variantes de este formato en:  https://regex101.com/r/ex8B2J/1 . El literal cumplira este formato si en los grupos 1 y 4 del regex están las velocidades, en los grupos 2 y 5 las unidades y en el grupo 3 el separador.
 
 **Comparacion**
  
@@ -77,7 +77,7 @@ Ejemplos de velocidades en este formato:  <br>
 "150Gbps"  <br>
 {150 Gbps}  
 
-Las combinaciones validas de este formato son muchas. Se puede probar diferentes variantes de este formato en:  https://regex101.com . El literal cumplira este formato si en el grupo 1 está la velocidad y en el grupo 2 está la unidad.
+Las combinaciones validas de este formato son muchas. Se puede probar diferentes variantes de este formato en:  https://regex101.com/r/Ec3jnG/1 . El literal cumplira este formato si en el grupo 1 está la velocidad y en el grupo 2 está la unidad.
 
 **Comparacion**
 Devuelve  `true` si la *velocidad1*  es mayor que la de la *velocidad2* y `false` en caso contrario.
