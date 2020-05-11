@@ -7,15 +7,23 @@ public class VelocidadRed {
     private String velocidad;
 
     public VelocidadRed(String velocidadRed) {
-        this.velocidad = velocidadRed;
+        velocidad = velocidadRed;
     }
 
-    public boolean mayorQue(VelocidadRed velocidaComparada) {
-        return VelocidadRedComparador.primeraVelocidadEsMayor(this.velocidad, velocidaComparada.getVelocidadRed());
+    public boolean esMayor(VelocidadRed velocidadRed) {
+        return VelocidadRedComparador.primeraVelocidadEsMayor(velocidad, velocidadRed.getVelocidad());
     }
-    
 
-    public String getVelocidadRed() {
+    public boolean esIgual(VelocidadRed velocidadRed) {
+        return VelocidadRedComparador.velocidadesSonIguales(velocidad, velocidadRed.getVelocidad());
+    }
+
+    public boolean esMenor(VelocidadRed velocidadRed) {
+        return !VelocidadRedComparador.primeraVelocidadEsMayor(velocidad, velocidadRed.getVelocidad())
+                && !VelocidadRedComparador.velocidadesSonIguales(velocidad, velocidadRed.getVelocidad());
+    }
+
+    public String getVelocidad() {
         return velocidad;
     }
 }
