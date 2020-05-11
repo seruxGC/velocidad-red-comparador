@@ -2,7 +2,7 @@ package app.test;
 
 import org.junit.Test;
 
-import app.context.VelocidadRedComparador;
+import app.velocidad.comparador.contexto.VelocidadRedComparadorContext;
 
 public class VelocidadRedComparadorTest {
 
@@ -17,7 +17,7 @@ public class VelocidadRedComparadorTest {
 		String velocidadRed1 = "23 PGKñ";
 		String velocidadRed2 = "8 Kbps";
 
-		VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+		VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -27,7 +27,7 @@ public class VelocidadRedComparadorTest {
 		String velocidadRed1 = "8 Kbps";
 		String velocidadRed2 = "23 Ksj";
 
-		VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+		VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -37,7 +37,7 @@ public class VelocidadRedComparadorTest {
 		String velocidadRed1 = "Acceso VPN IP FTTH 200M/200M SIN VOZ";
 		String velocidadRed2 = "13 Kbps";
 
-		VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
+		VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
 	}
 
 }

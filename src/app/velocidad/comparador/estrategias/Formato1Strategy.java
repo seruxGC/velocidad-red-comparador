@@ -1,9 +1,11 @@
-package app.estrategias;
+package app.velocidad.comparador.estrategias;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import app.interfaces.ComparacionVelocidadStrategy;
+import app.velocidad.comparador.interfaces.ComparacionVelocidadStrategy;
+
+
 
 /**
  * Formato 1

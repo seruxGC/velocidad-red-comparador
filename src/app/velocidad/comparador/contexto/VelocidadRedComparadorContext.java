@@ -1,4 +1,4 @@
-package app.context;
+package app.velocidad.comparador.contexto;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -6,13 +6,11 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import app.estrategias.Formato1Strategy;
-import app.estrategias.Formato2Strategy;
-import app.interfaces.ComparacionVelocidadStrategy;
+import app.velocidad.comparador.estrategias.Formato1Strategy;
+import app.velocidad.comparador.estrategias.Formato2Strategy;
+import app.velocidad.comparador.interfaces.ComparacionVelocidadStrategy;
 
-public class VelocidadRedComparador {
-
-    // private static HashMap<Pattern, ComparacionVelocidadStrategy> mapaEstrategias = new HashMap<>();
+public class VelocidadRedComparadorContext {
 
     private static final Map<Pattern, ComparacionVelocidadStrategy> mapaEstrategias;
     
@@ -25,9 +23,8 @@ public class VelocidadRedComparador {
         mapaEstrategias = Collections.unmodifiableMap(tempMap);
     }
 
-    public VelocidadRedComparador() {
-        mapaEstrategias.put(Formato1Strategy.PATTERN, new Formato1Strategy());
-        mapaEstrategias.put(Formato2Strategy.PATTERN, new Formato2Strategy());
+    private VelocidadRedComparadorContext() {
+        throw new IllegalStateException("Clase de utilidad");
     }
 
     /**

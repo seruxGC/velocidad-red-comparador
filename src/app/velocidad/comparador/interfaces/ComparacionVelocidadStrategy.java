@@ -1,4 +1,4 @@
-package app.interfaces;
+package app.velocidad.comparador.interfaces;
 
 public interface ComparacionVelocidadStrategy {
    
