@@ -21,7 +21,7 @@ public class Formato2Strategy implements ComparacionVelocidadStrategy {
     private static final short MULTIPLO_VELOCIDADES = 1000;
 
     @Override
-    public boolean compara(String velocidadRed1, String velocidadRed2) {
+    public boolean primeraVelocidadEsMayor(String velocidadRed1, String velocidadRed2) {
 
         float velocidadMegabits1 = velocidadEnMegabits(velocidadRed1);
         float velocidadMegabits2 = velocidadEnMegabits(velocidadRed2);
@@ -29,13 +29,19 @@ public class Formato2Strategy implements ComparacionVelocidadStrategy {
         return velocidadMegabits1 > velocidadMegabits2;
     }
 
+    @Override
+    public boolean velocidadesSonIguales(String velocidadRed1, String velocidadRed2) {
+
+        float velocidadMegabits1 = velocidadEnMegabits(velocidadRed1);
+        float velocidadMegabits2 = velocidadEnMegabits(velocidadRed2);
+
+        return velocidadMegabits1 == velocidadMegabits2;
+
+    }
+
     private float velocidadEnMegabits(String velocidadRed) {
 
-        Matcher matcher = PATTERN.matcher(velocidadRed);
-
-        if (!matcher.matches()) {
-            throw new IllegalArgumentException("La velocidad de red '" + velocidadRed + "' no es valida");
-        }
+        Matcher matcher = matchPattern(velocidadRed);
 
         String unidadVelocidad = obtenerUnidadVelocidad(matcher);
 
@@ -52,12 +58,28 @@ public class Formato2Strategy implements ComparacionVelocidadStrategy {
 
     }
 
+    /**
+     * Comprueba que la velocidad cumple el patron
+     * 
+     * @param velocidadRed
+     * @return Devuelve un objeto Matcher si encuentra el patron y
+     *         IllegalArgumentException en caso contrario
+     */
+    private Matcher matchPattern(String velocidadRed) {
+        Matcher matcher = PATTERN.matcher(velocidadRed);
+
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("La velocidad de red '" + velocidadRed + "' no es valida");
+        }
+        return matcher;
+    }
+
     private static float obtenerNumeroVelocidad(Matcher matcher) {
         return Float.parseFloat(matcher.group(1).replace(",", "."));
     }
 
     private static String obtenerUnidadVelocidad(Matcher matcher) {
-      return matcher.group(2);
+        return matcher.group(2);
     }
 
 }

@@ -5,8 +5,6 @@ import java.util.regex.Pattern;
 
 import app.velocidad.comparador.interfaces.ComparacionVelocidadStrategy;
 
-
-
 /**
  * Formato 1
  * https://github.com/seruxGC/velocidad-red-comparador/blob/master/README.md#formato-1
@@ -24,10 +22,9 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
     private static final String MEGABITS = "M";
     private static final String GIGABITS = "G";
     private static final short MULTIPLO_VELOCIDADES = 1000;
-    
 
     @Override
-    public boolean compara(String velocidadRed1, String velocidadRed2) {
+    public boolean primeraVelocidadEsMayor(String velocidadRed1, String velocidadRed2) {
 
         float velocidadBajadaMegabits1 = velocidadBajadaEnMegabits(velocidadRed1);
         float velocidadSubidaMegabits1 = velocidadSubidaEnMegabits(velocidadRed1);
@@ -39,13 +36,21 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
                 && velocidadSubidaMegabits1 > velocidadSubidaMegabits2;
     }
 
+    @Override
+    public boolean velocidadesSonIguales(String velocidadRed1, String velocidadRed2) {
+        float velocidadBajadaMegabits1 = velocidadBajadaEnMegabits(velocidadRed1);
+        float velocidadSubidaMegabits1 = velocidadSubidaEnMegabits(velocidadRed1);
+
+        float velocidadBajadaMegabits2 = velocidadBajadaEnMegabits(velocidadRed2);
+        float velocidadSubidaMegabits2 = velocidadSubidaEnMegabits(velocidadRed2);
+
+        return velocidadBajadaMegabits1 == velocidadBajadaMegabits2
+                && velocidadSubidaMegabits1 == velocidadSubidaMegabits2;
+    }
+
     private static float velocidadBajadaEnMegabits(String velocidadRed) {
 
-        Matcher matcher = PATTERN.matcher(velocidadRed);
-
-        if (!matcher.find()) {
-            throw new IllegalArgumentException("Error al obtener velocidad de bajada");
-        }
+        Matcher matcher = matchPattern(velocidadRed);
 
         float numeroVelocidad = obtenerNumeroVelocidadBajada(matcher);
         String unidadVelocidad = obtenerUnidadVelocidadBajada(matcher);
@@ -55,16 +60,28 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
 
     private static float velocidadSubidaEnMegabits(String velocidadRed) {
 
-        Matcher matcher = PATTERN.matcher(velocidadRed);
-
-        if (!matcher.find()) {
-            throw new IllegalArgumentException("Error al obtener velocidad de bajada");
-        }
+        Matcher matcher = matchPattern(velocidadRed);
 
         float numeroVelocidad = obtenerNumeroVelocidadSubida(matcher);
         String unidadVelocidad = obtenerUnidadVelocidaSubida(matcher);
 
         return calculaVelocidadMegabits(numeroVelocidad, unidadVelocidad);
+    }
+
+    /**
+     * Comprueba que la velocidad cumple el patron
+     * 
+     * @param velocidadRed
+     * @return Devuelve un objeto Matcher si encuentra el patron y
+     *         IllegalArgumentException en caso contrario
+     */
+    private static Matcher matchPattern(String velocidadRed) {
+        Matcher matcher = PATTERN.matcher(velocidadRed);
+
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("Error al obtener velocidad de bajada");
+        }
+        return matcher;
     }
 
     /**
@@ -94,8 +111,8 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
     }
 
     private static float calculaVelocidadMegabits(float numeroVelocidad, String unidadVelocidad) {
-        
-        if(unidadVelocidad.equals(KILOBITS) || unidadVelocidad.equals(KILOBITS_SEGUNDO)) {
+
+        if (unidadVelocidad.equals(KILOBITS) || unidadVelocidad.equals(KILOBITS_SEGUNDO)) {
             return numeroVelocidad / MULTIPLO_VELOCIDADES;
         }
 

@@ -6,7 +6,7 @@ public class App {
     public static void main(String[] args) {
        
 
-        boolean result2 = VelocidadRedComparador.compara("2 Kbps", "1.5 Kbps");
+        boolean result2 = VelocidadRedComparador.primeraVelocidadEsMayor("2 Kbps", "1.5 Kbps");
    
         System.out.println(result2);
 

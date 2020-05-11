@@ -7,5 +7,7 @@ public interface ComparacionVelocidadStrategy {
      * @param velocidadRed2
      * @return True si velocidadRed1 > velocidadRed2 , False en caso contrario
      */
-    boolean compara(String velocidadRed1, String velocidadRed2);
+    boolean primeraVelocidadEsMayor(String velocidadRed1, String velocidadRed2);
+
+    boolean velocidadesSonIguales(String velocidadRed1, String velocidadRed2);
 }
