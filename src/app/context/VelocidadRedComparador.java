@@ -1,5 +1,6 @@
 package app.context;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -11,7 +12,18 @@ import app.interfaces.ComparacionVelocidadStrategy;
 
 public class VelocidadRedComparador {
 
-    private HashMap<Pattern, ComparacionVelocidadStrategy> mapaEstrategias = new HashMap<>();
+    // private static HashMap<Pattern, ComparacionVelocidadStrategy> mapaEstrategias = new HashMap<>();
+
+    private static final Map<Pattern, ComparacionVelocidadStrategy> mapaEstrategias;
+    
+    static {
+        Map<Pattern, ComparacionVelocidadStrategy> tempMap = new HashMap<>();
+
+        tempMap.put(Formato1Strategy.PATTERN, new Formato1Strategy());
+        tempMap.put(Formato2Strategy.PATTERN, new Formato2Strategy());
+
+        mapaEstrategias = Collections.unmodifiableMap(tempMap);
+    }
 
     public VelocidadRedComparador() {
         mapaEstrategias.put(Formato1Strategy.PATTERN, new Formato1Strategy());
@@ -23,7 +35,7 @@ public class VelocidadRedComparador {
      * @param velocidadRed2
      * @return True si velocidadRed1 > velocidadRed2 , False en caso contrario
      */
-    public boolean compara(String velocidadRed1, String velocidadRed2) {
+    public static boolean compara(String velocidadRed1, String velocidadRed2) {
 
         ComparacionVelocidadStrategy estrategiaVelocidad1 = escogeEstrategia(velocidadRed1);
         ComparacionVelocidadStrategy estrategiaVelocidad2 = escogeEstrategia(velocidadRed2);
@@ -50,7 +62,7 @@ public class VelocidadRedComparador {
      * @return Devuelve la estrategia a utilizar o IllegalArgumentException en caso
      *         de que no encuentre ninguna.
      */
-    private ComparacionVelocidadStrategy escogeEstrategia(String velocidadRed) {
+    private static ComparacionVelocidadStrategy escogeEstrategia(String velocidadRed) {
 
         for (Map.Entry<Pattern, ComparacionVelocidadStrategy> estrategia : mapaEstrategias.entrySet()) {
             Pattern patron = estrategia.getKey();
