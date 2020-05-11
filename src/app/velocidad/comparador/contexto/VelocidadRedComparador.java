@@ -10,7 +10,7 @@ import app.velocidad.comparador.estrategias.Formato1Strategy;
 import app.velocidad.comparador.estrategias.Formato2Strategy;
 import app.velocidad.comparador.interfaces.ComparacionVelocidadStrategy;
 
-public class VelocidadRedComparadorContext {
+public class VelocidadRedComparador {
 
     private static final Map<Pattern, ComparacionVelocidadStrategy> mapaEstrategias;
     
@@ -23,7 +23,7 @@ public class VelocidadRedComparadorContext {
         mapaEstrategias = Collections.unmodifiableMap(tempMap);
     }
 
-    private VelocidadRedComparadorContext() {
+    private VelocidadRedComparador() {
         throw new IllegalStateException("Clase de utilidad");
     }
 

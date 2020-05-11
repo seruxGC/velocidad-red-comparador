@@ -91,3 +91,6 @@ Ejemplos:
     VelocidadRedComparador.compara("{1Gbps}", "2 Gbps); // false
 
     VelocidadRedComparador.compara("[1 Gbps]", "[1,5 Gbps]; // false
+
+
+

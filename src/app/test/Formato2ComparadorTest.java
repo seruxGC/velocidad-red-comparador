@@ -3,7 +3,7 @@ package app.test;
 import org.junit.Assert;
 import org.junit.Test;
 
-import app.velocidad.comparador.contexto.VelocidadRedComparadorContext;
+import app.velocidad.comparador.contexto.VelocidadRedComparador;
 
 public class Formato2ComparadorTest {
 
@@ -15,7 +15,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "2 Kbps";
         String velocidadRed2 = "1 Kbps";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -26,7 +26,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "2 Mbps";
         String velocidadRed2 = "1 Mbps";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -37,7 +37,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "2 Gbps";
         String velocidadRed2 = "1 Gbps";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -48,7 +48,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "1001 Kbps";
         String velocidadRed2 = "1 Mbps";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -59,7 +59,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "1000001 Kbps";
         String velocidadRed2 = "1 Gbps";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -70,7 +70,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "1 Mbps";
         String velocidadRed2 = "999 Kbps";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -81,7 +81,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "1001 Mbps";
         String velocidadRed2 = "1 Gbps";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -92,7 +92,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "1,5 Kbps";
         String velocidadRed2 = "1 Kbps";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -103,7 +103,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "1.5 Kbps";
         String velocidadRed2 = "1 Kbps";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -114,7 +114,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "1.1 Mbps";
         String velocidadRed2 = "1000 Kbps";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -125,7 +125,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "1,1 Gbps";
         String velocidadRed2 = "1000 Mbps";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -136,7 +136,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "1,1-Gbps";
         String velocidadRed2 = "1000-Mbps";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -147,7 +147,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "1,1 - Gbps";
         String velocidadRed2 = "1000 - Mbps";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -158,7 +158,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "[1,1-Gbps]";
         String velocidadRed2 = "[1000-Mbps]";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -169,7 +169,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "[1,1 - Gbps]";
         String velocidadRed2 = "[1000 - Mbps]";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -180,7 +180,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "{1,1-Gbps}";
         String velocidadRed2 = "{1000-Mbps}";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -191,7 +191,7 @@ public class Formato2ComparadorTest {
         String velocidadRed1 = "{1,1 - Gbps}";
         String velocidadRed2 = "{1000 - Mbps}";
 
-        boolean resultado = VelocidadRedComparadorContext.compara(velocidadRed1, velocidadRed2);
+        boolean resultado = VelocidadRedComparador.compara(velocidadRed1, velocidadRed2);
         Assert.assertTrue(resultado);
     }
     
