@@ -16,12 +16,6 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
 
     public static final Pattern PATTERN = Pattern.compile(REGEX_FORMATO);
 
-    private static final String KILOBITS_SEGUNDO = "Kbps";
-    private static final String MEGABITS_SEGUNDO = "Mbps";
-    private static final String GIGABITS_SEGUNDO = "Gbps";
-    private static final String KILOBITS = "K";
-    private static final String MEGABITS = "M";
-    private static final String GIGABITS = "G";
     private static final short MULTIPLO_VELOCIDADES = 1000;
 
     @Override

@@ -15,10 +15,6 @@ public class Formato2Strategy implements ComparacionVelocidadStrategy {
     private static final String REGEX_FORMATO = "^[\\[,\\{]?(\\d+[\\,\\.]?\\d*?)\\s?\\-?\\s?(Kbps|Mbps|Gbps)[\\},\\]]?$";
     public static final Pattern PATTERN = Pattern.compile(REGEX_FORMATO);
 
-    private static final String KILOBITS_SEGUNDO = "Kbps";
-    private static final String MEGABITS_SEGUNDO = "Mbps";
-    private static final String GIBABITS_SEGUNDO = "Gbps";
-
     private static final short MULTIPLO_VELOCIDADES = 1000;
 
     @Override
