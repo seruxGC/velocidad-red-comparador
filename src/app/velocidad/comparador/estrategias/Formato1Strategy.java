@@ -13,20 +13,19 @@ import app.velocidad.comparador.interfaces.ComparacionVelocidadStrategy;
  */
 public class Formato1Strategy implements ComparacionVelocidadStrategy {
 
-    private static final String REGEX_FORMATO = ".*?(\\d+[\\,\\.]??\\d*?)\\s??(Kbps|Mbps|Gbps|K|M|G).*?(\\/|\\-).*?(\\d+[\\,\\.]??\\d?)\\s??(Kbps|Mbps|Gbps|K|M|G).*";
-
-    public static final Pattern PATTERN = Pattern.compile(REGEX_FORMATO);
-
-    private static final short MULTIPLO_VELOCIDADES = 1000;
+    public static final Pattern PATTERN = Pattern.compile(
+            ".*?(\\d+[\\,\\.]??\\d*?)\\s??(Kbps|Mbps|Gbps|K|M|G).*?(\\/|\\-).*?(\\d+[\\,\\.]??\\d?)\\s??(Kbps|Mbps|Gbps|K|M|G).*");
 
     @Override
     public boolean primeraVelocidadEsMayor(String velocidadRed1, String velocidadRed2) {
 
-        float velocidadBajadaMegabits1 = velocidadBajadaEnMegabits(velocidadRed1);
-        float velocidadSubidaMegabits1 = velocidadSubidaEnMegabits(velocidadRed1);
+        Matcher matcherVel1 = matchPattern(velocidadRed1);
+        Matcher matcherVel2 = matchPattern(velocidadRed2);
 
-        float velocidadBajadaMegabits2 = velocidadBajadaEnMegabits(velocidadRed2);
-        float velocidadSubidaMegabits2 = velocidadSubidaEnMegabits(velocidadRed2);
+        float velocidadBajadaMegabits1 = velocidadBajadaEnMegabits(matcherVel1);
+        float velocidadSubidaMegabits1 = velocidadSubidaEnMegabits(matcherVel1);
+        float velocidadBajadaMegabits2 = velocidadBajadaEnMegabits(matcherVel2);
+        float velocidadSubidaMegabits2 = velocidadSubidaEnMegabits(matcherVel2);
 
         return velocidadBajadaMegabits1 > velocidadBajadaMegabits2
                 && velocidadSubidaMegabits1 > velocidadSubidaMegabits2;
@@ -34,19 +33,20 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
 
     @Override
     public boolean velocidadesSonIguales(String velocidadRed1, String velocidadRed2) {
-        float velocidadBajadaMegabits1 = velocidadBajadaEnMegabits(velocidadRed1);
-        float velocidadSubidaMegabits1 = velocidadSubidaEnMegabits(velocidadRed1);
 
-        float velocidadBajadaMegabits2 = velocidadBajadaEnMegabits(velocidadRed2);
-        float velocidadSubidaMegabits2 = velocidadSubidaEnMegabits(velocidadRed2);
+        Matcher matcherVel1 = matchPattern(velocidadRed1);
+        Matcher matcherVel2 = matchPattern(velocidadRed2);
+
+        float velocidadBajadaMegabits1 = velocidadBajadaEnMegabits(matcherVel1);
+        float velocidadSubidaMegabits1 = velocidadSubidaEnMegabits(matcherVel1);
+        float velocidadBajadaMegabits2 = velocidadBajadaEnMegabits(matcherVel2);
+        float velocidadSubidaMegabits2 = velocidadSubidaEnMegabits(matcherVel2);
 
         return velocidadBajadaMegabits1 == velocidadBajadaMegabits2
                 && velocidadSubidaMegabits1 == velocidadSubidaMegabits2;
     }
 
-    private static float velocidadBajadaEnMegabits(String velocidadRed) {
-
-        Matcher matcher = matchPattern(velocidadRed);
+    private static float velocidadBajadaEnMegabits(Matcher matcher) {
 
         float numeroVelocidad = obtenerNumeroVelocidadBajada(matcher);
         UnidadVelocidad unidadVelocidad = obtenerUnidadVelocidadBajada(matcher);
@@ -54,9 +54,7 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
         return VelocidadRedCalculo.getVelocidadEnMegabits(numeroVelocidad, unidadVelocidad);
     }
 
-    private static float velocidadSubidaEnMegabits(String velocidadRed) {
-
-        Matcher matcher = matchPattern(velocidadRed);
+    private static float velocidadSubidaEnMegabits(Matcher matcher) {
 
         float numeroVelocidad = obtenerNumeroVelocidadSubida(matcher);
         UnidadVelocidad unidadVelocidad = obtenerUnidadVelocidaSubida(matcher);
@@ -72,6 +70,7 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
      *         IllegalArgumentException en caso contrario
      */
     private static Matcher matchPattern(String velocidadRed) {
+
         Matcher matcher = PATTERN.matcher(velocidadRed);
 
         if (!matcher.matches()) {

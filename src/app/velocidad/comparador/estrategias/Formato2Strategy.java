@@ -13,14 +13,11 @@ import app.velocidad.comparador.interfaces.ComparacionVelocidadStrategy;
  */
 public class Formato2Strategy implements ComparacionVelocidadStrategy {
 
-    private static final String REGEX_FORMATO = "^[\\[,\\{]?(\\d+[\\,\\.]?\\d*?)\\s?\\-?\\s?(Kbps|Mbps|Gbps)[\\},\\]]?$";
-    public static final Pattern PATTERN = Pattern.compile(REGEX_FORMATO);
-
-    private static final short MULTIPLO_VELOCIDADES = 1000;
+    public static final Pattern PATTERN = Pattern
+            .compile("^[\\[,\\{]?(\\d+[\\,\\.]?\\d*?)\\s?\\-?\\s?(Kbps|Mbps|Gbps)[\\},\\]]?$");
 
     @Override
     public boolean primeraVelocidadEsMayor(String velocidadRed1, String velocidadRed2) {
-
 
         Matcher matcherVel1 = matchPattern(velocidadRed1);
         float velocidad1 = obtenerNumeroVelocidad(matcherVel1);
@@ -38,7 +35,7 @@ public class Formato2Strategy implements ComparacionVelocidadStrategy {
 
     @Override
     public boolean velocidadesSonIguales(String velocidadRed1, String velocidadRed2) {
-        
+
         Matcher matcherVel1 = matchPattern(velocidadRed1);
         float velocidad1 = obtenerNumeroVelocidad(matcherVel1);
         UnidadVelocidad unidadVelocidad1 = obtenerUnidadVelocidad(matcherVel1);
@@ -46,7 +43,7 @@ public class Formato2Strategy implements ComparacionVelocidadStrategy {
         Matcher matcherVel2 = matchPattern(velocidadRed2);
         float velocidad2 = obtenerNumeroVelocidad(matcherVel2);
         UnidadVelocidad unidadVelocidad2 = obtenerUnidadVelocidad(matcherVel2);
-        
+
         float velocidadMegabits1 = VelocidadRedCalculo.getVelocidadEnMegabits(velocidad1, unidadVelocidad1);
         float velocidadMegabits2 = VelocidadRedCalculo.getVelocidadEnMegabits(velocidad2, unidadVelocidad2);
 
