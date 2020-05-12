@@ -11,7 +11,7 @@ public class VelocidadBajadaSubida {
     private static final Pattern PATTERN = Pattern.compile(
             ".*?(\\d+[\\,\\.]??\\d*?)\\s??(Kbps|Mbps|Gbps|K|M|G).*?(\\/|\\-).*?(\\d+[\\,\\.]??\\d?)\\s??(Kbps|Mbps|Gbps|K|M|G).*");
 
-    private String litertalVelocidad;
+    private String literalVelocidad;
     private float velocidadBajada;
     private UnidadVelocidad unidadBajada;
     private float velocidadSubida;
@@ -30,7 +30,7 @@ public class VelocidadBajadaSubida {
 
         Matcher matcher = matchPattern(literalVelocidadRed);
 
-        litertalVelocidad = literalVelocidadRed;
+        literalVelocidad = literalVelocidadRed;
         velocidadBajada = obtenerNumeroVelocidadBajada(matcher);
         unidadBajada = obtenerUnidadVelocidadBajada(matcher);
         velocidadSubida = obtenerNumeroVelocidadSubida(matcher);
@@ -50,7 +50,7 @@ public class VelocidadBajadaSubida {
     public VelocidadBajadaSubida(float velocidadBajada, UnidadVelocidad unidadBajada, float velocidadSubida,
             UnidadVelocidad unidadSubida) {
 
-        litertalVelocidad = velocidadBajada + " " + unidadBajada + " - " + velocidadSubida + " " + unidadSubida;
+        literalVelocidad = velocidadBajada + " " + unidadBajada + " - " + velocidadSubida + " " + unidadSubida;
         this.velocidadBajada = velocidadBajada;
         this.unidadBajada = unidadBajada;
         this.velocidadSubida = velocidadSubida;
@@ -131,8 +131,8 @@ public class VelocidadBajadaSubida {
         return UnidadVelocidad.fromString(unidadSubida);
     }
 
-    public String getLitertalVelocidad() {
-        return litertalVelocidad;
+    public String getLiteralVelocidad() {
+        return literalVelocidad;
     }
 
     public float getVelocidadBajada() {
