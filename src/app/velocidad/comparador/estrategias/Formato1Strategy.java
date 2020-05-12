@@ -3,6 +3,7 @@ package app.velocidad.comparador.estrategias;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import app.velocidad.comparador.config.UnidadVelocidad;
 import app.velocidad.comparador.interfaces.ComparacionVelocidadStrategy;
 
 /**
@@ -53,7 +54,7 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
         Matcher matcher = matchPattern(velocidadRed);
 
         float numeroVelocidad = obtenerNumeroVelocidadBajada(matcher);
-        String unidadVelocidad = obtenerUnidadVelocidadBajada(matcher);
+        UnidadVelocidad unidadVelocidad = obtenerUnidadVelocidadBajada(matcher);
 
         return calculaVelocidadMegabits(numeroVelocidad, unidadVelocidad);
     }
@@ -63,7 +64,7 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
         Matcher matcher = matchPattern(velocidadRed);
 
         float numeroVelocidad = obtenerNumeroVelocidadSubida(matcher);
-        String unidadVelocidad = obtenerUnidadVelocidaSubida(matcher);
+        UnidadVelocidad unidadVelocidad = obtenerUnidadVelocidaSubida(matcher);
 
         return calculaVelocidadMegabits(numeroVelocidad, unidadVelocidad);
     }
@@ -93,8 +94,9 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
         return Float.parseFloat(matcher.group(1).replace(",", "."));
     }
 
-    private static String obtenerUnidadVelocidadBajada(Matcher matcher) {
-        return matcher.group(2);
+    private static UnidadVelocidad obtenerUnidadVelocidadBajada(Matcher matcher) {
+        String unidadBajada = matcher.group(2);
+        return UnidadVelocidad.fromString(unidadBajada);
     }
 
     /**
@@ -106,24 +108,25 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
         return Float.parseFloat(matcher.group(4).replace(",", "."));
     }
 
-    private static String obtenerUnidadVelocidaSubida(Matcher matcher) {
-        return matcher.group(5);
+    private static UnidadVelocidad obtenerUnidadVelocidaSubida(Matcher matcher) {
+        String unidadSubida = matcher.group(5);
+        return UnidadVelocidad.fromString(unidadSubida);
     }
 
-    private static float calculaVelocidadMegabits(float numeroVelocidad, String unidadVelocidad) {
+    private static float calculaVelocidadMegabits(float numeroVelocidad, UnidadVelocidad unidadVelocidad) {
 
-        if (unidadVelocidad.equals(KILOBITS) || unidadVelocidad.equals(KILOBITS_SEGUNDO)) {
+        if (UnidadVelocidad.KILOBITS_CARACTER == unidadVelocidad || UnidadVelocidad.KILOBITS_SEGUNDO == unidadVelocidad) {
             return numeroVelocidad / MULTIPLO_VELOCIDADES;
         }
 
-        if (unidadVelocidad.equals(MEGABITS) || unidadVelocidad.equals(MEGABITS_SEGUNDO)) {
+        if (UnidadVelocidad.MEGABITS_CARACTER == unidadVelocidad || UnidadVelocidad.MEGABITS_SEGUNDO == unidadVelocidad) {
             return numeroVelocidad;
         }
 
-        if (unidadVelocidad.equals(GIGABITS) || unidadVelocidad.equals(GIGABITS_SEGUNDO)) {
+        if (UnidadVelocidad.GIGABITS_CARACTER == unidadVelocidad || UnidadVelocidad.GIGABITS_SEGUNDO == unidadVelocidad) {
             return numeroVelocidad * MULTIPLO_VELOCIDADES;
         }
-
+ 
         throw new IllegalArgumentException("Velocidad desconocida");
 
     }

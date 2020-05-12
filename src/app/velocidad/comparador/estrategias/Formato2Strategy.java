@@ -3,6 +3,7 @@ package app.velocidad.comparador.estrategias;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import app.velocidad.comparador.config.UnidadVelocidad;
 import app.velocidad.comparador.interfaces.ComparacionVelocidadStrategy;
 
 /**
@@ -42,20 +43,21 @@ public class Formato2Strategy implements ComparacionVelocidadStrategy {
     private float velocidadEnMegabits(String velocidadRed) {
 
         Matcher matcher = matchPattern(velocidadRed);
+         UnidadVelocidad unidadVelocidad = obtenerUnidadVelocidad(matcher);
 
-        String unidadVelocidad = obtenerUnidadVelocidad(matcher);
-
-        switch (unidadVelocidad) {
-            case KILOBITS_SEGUNDO:
-                return obtenerNumeroVelocidad(matcher) / MULTIPLO_VELOCIDADES;
-            case MEGABITS_SEGUNDO:
-                return obtenerNumeroVelocidad(matcher);
-            case GIBABITS_SEGUNDO:
-                return obtenerNumeroVelocidad(matcher) * MULTIPLO_VELOCIDADES;
-            default:
-                throw new IllegalArgumentException("Velocidad desconocida");
+        if (UnidadVelocidad.KILOBITS_SEGUNDO == unidadVelocidad) {
+            return obtenerNumeroVelocidad(matcher) / MULTIPLO_VELOCIDADES;
         }
 
+        if (UnidadVelocidad.MEGABITS_SEGUNDO == unidadVelocidad) {
+            return obtenerNumeroVelocidad(matcher);
+        }
+
+        if (UnidadVelocidad.GIGABITS_SEGUNDO == unidadVelocidad) {
+            return obtenerNumeroVelocidad(matcher) * MULTIPLO_VELOCIDADES;
+        }
+
+        throw new IllegalArgumentException("Velocidad desconocida");
     }
 
     /**
@@ -78,8 +80,9 @@ public class Formato2Strategy implements ComparacionVelocidadStrategy {
         return Float.parseFloat(matcher.group(1).replace(",", "."));
     }
 
-    private static String obtenerUnidadVelocidad(Matcher matcher) {
-        return matcher.group(2);
+    private static UnidadVelocidad obtenerUnidadVelocidad(Matcher matcher) {
+        String unidadVelocidad = matcher.group(2);
+        return UnidadVelocidad.fromString(unidadVelocidad);
     }
 
 }
