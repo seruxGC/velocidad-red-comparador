@@ -1,5 +1,8 @@
 package app;
 
+import app.velocidad.clases.VelocidadBajadaSubida;
+import app.velocidad.clases.VelocidadRed;
+
 public class App {
     public static void main(String[] args) {
 

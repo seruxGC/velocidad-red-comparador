@@ -3,7 +3,7 @@ package app.test;
 import org.junit.Assert;
 import org.junit.Test;
 
-import app.VelocidadRed;
+import app.velocidad.clases.VelocidadRed;
 
 public class VelocidadRedTest {
 
@@ -231,7 +231,7 @@ public class VelocidadRedTest {
     /** Velocidad usa un formato no implementado */
     public void velocidadNoImplementadaTest1() {
 
-        VelocidadRed vel = new VelocidadRed("8 Tbps");
+        new VelocidadRed("8 Tbps");
     }
 
 }

@@ -1,10 +1,10 @@
-package app;
+package app.velocidad.clases;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import app.velocidad.calculo.VelocidadRedCalculo;
-import app.velocidad.comparador.config.UnidadVelocidad;
+import app.velocidad.constantes.UnidadVelocidad;
+import app.velocidad.util.VelocidadRedCalculo;
 
 public class VelocidadBajadaSubida {
 

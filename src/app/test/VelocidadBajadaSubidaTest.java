@@ -3,8 +3,8 @@ package app.test;
 import org.junit.Assert;
 import org.junit.Test;
 
-import app.VelocidadBajadaSubida;
-import app.velocidad.comparador.config.UnidadVelocidad;
+import app.velocidad.clases.VelocidadBajadaSubida;
+import app.velocidad.constantes.UnidadVelocidad;
 
 public class VelocidadBajadaSubidaTest {
 
@@ -518,7 +518,7 @@ public class VelocidadBajadaSubidaTest {
     /** Velocidad usa un formato no implementado */
     public void velocidadNoImplementadaTest1() {
 
-        VelocidadBajadaSubida vel = new VelocidadBajadaSubida("asdd2 50 Mbps-432 ");
+      new VelocidadBajadaSubida("asdd2 50 Mbps-432 ");
     }
 
 
