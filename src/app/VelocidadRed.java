@@ -23,8 +23,10 @@ public class VelocidadRed {
      *                            https://github.com/seruxGC/velocidad-red-comparador/blob/master/README.md#formato-2
      */
     public VelocidadRed(String literalVelocidadRed) {
-        litertalVelocidad = literalVelocidadRed;
+        
         Matcher matcher = matchPattern(literalVelocidadRed);
+
+        litertalVelocidad = literalVelocidadRed;
         velocidad = obtenerNumeroVelocidad(matcher);
         unidad = obtenerUnidadVelocidad(matcher);
         velocidadMegabits = VelocidadRedCalculo.getVelocidadEnMegabits(velocidad, unidad);
@@ -36,7 +38,7 @@ public class VelocidadRed {
      * @param unidad
      */
     public VelocidadRed(float velocidad, UnidadVelocidad unidad) {
-        this.litertalVelocidad = velocidad + unidad.getValor();
+        this.litertalVelocidad = velocidad + " " + unidad.getValor();
         this.velocidad = velocidad;
         this.unidad = unidad;
         velocidadMegabits = VelocidadRedCalculo.getVelocidadEnMegabits(velocidad, unidad);
