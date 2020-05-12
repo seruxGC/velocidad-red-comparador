@@ -59,6 +59,12 @@ public class VelocidadBajadaSubida {
         velocidadSubidaMegabits = VelocidadRedCalculo.getVelocidadEnMegabits(velocidadSubida, unidadSubida);
     }
 
+    /**
+     * 
+     * @param velocidadBajadaSubidaComparada
+     * @return True si la velocidad de bajada y subida de la velocidad propia es
+     *         mayor que la comparada
+     */
     public boolean esMayor(VelocidadBajadaSubida velocidadBajadaSubidaComparada) {
         return velocidadBajadaMegabits > velocidadBajadaSubidaComparada.getVelocidadBajadaMegabits()
                 && velocidadSubidaMegabits > velocidadBajadaSubidaComparada.getVelocidadSubidaMegabits();
@@ -69,6 +75,12 @@ public class VelocidadBajadaSubida {
                 && velocidadSubidaMegabits == velocidadBajadaSubidaComparada.getVelocidadSubidaMegabits();
     }
 
+    /**
+     * 
+     * @param velocidadBajadaSubidaComparada
+     * @return rue si la velocidad de bajada y subida de la velocidad propia es
+     *         menor que la comparada
+     */
     public boolean esMenor(VelocidadBajadaSubida velocidadBajadaSubidaComparada) {
         return velocidadBajadaMegabits < velocidadBajadaSubidaComparada.getVelocidadBajadaMegabits()
                 && velocidadSubidaMegabits < velocidadBajadaSubidaComparada.getVelocidadSubidaMegabits();
