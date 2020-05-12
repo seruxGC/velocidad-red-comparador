@@ -50,7 +50,8 @@ public class VelocidadBajadaSubida {
     public VelocidadBajadaSubida(float velocidadBajada, UnidadVelocidad unidadBajada, float velocidadSubida,
             UnidadVelocidad unidadSubida) {
 
-        literalVelocidad = velocidadBajada + " " + unidadBajada + " - " + velocidadSubida + " " + unidadSubida;
+        literalVelocidad = velocidadBajada + " " + unidadBajada.getValor() + " - " + velocidadSubida + " "
+                + unidadSubida.getValor();
         this.velocidadBajada = velocidadBajada;
         this.unidadBajada = unidadBajada;
         this.velocidadSubida = velocidadSubida;
