@@ -3,6 +3,7 @@ package app.velocidad.comparador.estrategias;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import app.velocidad.calculo.VelocidadRedCalculo;
 import app.velocidad.comparador.config.UnidadVelocidad;
 import app.velocidad.comparador.interfaces.ComparacionVelocidadStrategy;
 
@@ -50,7 +51,7 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
         float numeroVelocidad = obtenerNumeroVelocidadBajada(matcher);
         UnidadVelocidad unidadVelocidad = obtenerUnidadVelocidadBajada(matcher);
 
-        return calculaVelocidadMegabits(numeroVelocidad, unidadVelocidad);
+        return VelocidadRedCalculo.getVelocidadEnMegabits(numeroVelocidad, unidadVelocidad);
     }
 
     private static float velocidadSubidaEnMegabits(String velocidadRed) {
@@ -60,7 +61,7 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
         float numeroVelocidad = obtenerNumeroVelocidadSubida(matcher);
         UnidadVelocidad unidadVelocidad = obtenerUnidadVelocidaSubida(matcher);
 
-        return calculaVelocidadMegabits(numeroVelocidad, unidadVelocidad);
+        return VelocidadRedCalculo.getVelocidadEnMegabits(numeroVelocidad, unidadVelocidad);
     }
 
     /**
@@ -105,24 +106,6 @@ public class Formato1Strategy implements ComparacionVelocidadStrategy {
     private static UnidadVelocidad obtenerUnidadVelocidaSubida(Matcher matcher) {
         String unidadSubida = matcher.group(5);
         return UnidadVelocidad.fromString(unidadSubida);
-    }
-
-    private static float calculaVelocidadMegabits(float numeroVelocidad, UnidadVelocidad unidadVelocidad) {
-
-        if (UnidadVelocidad.KILOBITS_CARACTER == unidadVelocidad || UnidadVelocidad.KILOBITS_SEGUNDO == unidadVelocidad) {
-            return numeroVelocidad / MULTIPLO_VELOCIDADES;
-        }
-
-        if (UnidadVelocidad.MEGABITS_CARACTER == unidadVelocidad || UnidadVelocidad.MEGABITS_SEGUNDO == unidadVelocidad) {
-            return numeroVelocidad;
-        }
-
-        if (UnidadVelocidad.GIGABITS_CARACTER == unidadVelocidad || UnidadVelocidad.GIGABITS_SEGUNDO == unidadVelocidad) {
-            return numeroVelocidad * MULTIPLO_VELOCIDADES;
-        }
- 
-        throw new IllegalArgumentException("Velocidad desconocida");
-
     }
 
 }

@@ -3,6 +3,7 @@ package app.velocidad.comparador.estrategias;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import app.velocidad.calculo.VelocidadRedCalculo;
 import app.velocidad.comparador.config.UnidadVelocidad;
 import app.velocidad.comparador.interfaces.ComparacionVelocidadStrategy;
 
@@ -20,40 +21,36 @@ public class Formato2Strategy implements ComparacionVelocidadStrategy {
     @Override
     public boolean primeraVelocidadEsMayor(String velocidadRed1, String velocidadRed2) {
 
-        float velocidadMegabits1 = velocidadEnMegabits(velocidadRed1);
-        float velocidadMegabits2 = velocidadEnMegabits(velocidadRed2);
+
+        Matcher matcherVel1 = matchPattern(velocidadRed1);
+        float velocidad1 = obtenerNumeroVelocidad(matcherVel1);
+        UnidadVelocidad unidadVelocidad1 = obtenerUnidadVelocidad(matcherVel1);
+
+        Matcher matcherVel2 = matchPattern(velocidadRed2);
+        float velocidad2 = obtenerNumeroVelocidad(matcherVel2);
+        UnidadVelocidad unidadVelocidad2 = obtenerUnidadVelocidad(matcherVel2);
+
+        float velocidadMegabits1 = VelocidadRedCalculo.getVelocidadEnMegabits(velocidad1, unidadVelocidad1);
+        float velocidadMegabits2 = VelocidadRedCalculo.getVelocidadEnMegabits(velocidad2, unidadVelocidad2);
 
         return velocidadMegabits1 > velocidadMegabits2;
     }
 
     @Override
     public boolean velocidadesSonIguales(String velocidadRed1, String velocidadRed2) {
+        
+        Matcher matcherVel1 = matchPattern(velocidadRed1);
+        float velocidad1 = obtenerNumeroVelocidad(matcherVel1);
+        UnidadVelocidad unidadVelocidad1 = obtenerUnidadVelocidad(matcherVel1);
 
-        float velocidadMegabits1 = velocidadEnMegabits(velocidadRed1);
-        float velocidadMegabits2 = velocidadEnMegabits(velocidadRed2);
+        Matcher matcherVel2 = matchPattern(velocidadRed2);
+        float velocidad2 = obtenerNumeroVelocidad(matcherVel2);
+        UnidadVelocidad unidadVelocidad2 = obtenerUnidadVelocidad(matcherVel2);
+        
+        float velocidadMegabits1 = VelocidadRedCalculo.getVelocidadEnMegabits(velocidad1, unidadVelocidad1);
+        float velocidadMegabits2 = VelocidadRedCalculo.getVelocidadEnMegabits(velocidad2, unidadVelocidad2);
 
         return velocidadMegabits1 == velocidadMegabits2;
-
-    }
-
-    private float velocidadEnMegabits(String velocidadRed) {
-
-        Matcher matcher = matchPattern(velocidadRed);
-         UnidadVelocidad unidadVelocidad = obtenerUnidadVelocidad(matcher);
-
-        if (UnidadVelocidad.KILOBITS_SEGUNDO == unidadVelocidad) {
-            return obtenerNumeroVelocidad(matcher) / MULTIPLO_VELOCIDADES;
-        }
-
-        if (UnidadVelocidad.MEGABITS_SEGUNDO == unidadVelocidad) {
-            return obtenerNumeroVelocidad(matcher);
-        }
-
-        if (UnidadVelocidad.GIGABITS_SEGUNDO == unidadVelocidad) {
-            return obtenerNumeroVelocidad(matcher) * MULTIPLO_VELOCIDADES;
-        }
-
-        throw new IllegalArgumentException("Velocidad desconocida");
     }
 
     /**
