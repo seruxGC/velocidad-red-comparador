@@ -22,13 +22,13 @@ VelocidadBajadaSubida (float velocidadBajada, UnidadVelocidad unidad, float velo
 
 La clase `VelocidadBajadaSubida` tiene funciones de comparacion de las velocidades de bajada y de subida.
 
-	velocidad1.tieneIgualVelocidadBajadaQue(velocidad2); // false
-	velocidad1.tieneMayorVelocidadBajadaQue(velocidad2); // false
-	velocidad1.tieneMenorVelocidadBajadaQue(velocidad2); // true
+	velocidad1.igualVelocidadBajadaQue(velocidad2); // false
+	velocidad1.mayorVelocidadBajadaQue(velocidad2); // false
+	velocidad1.menorVelocidadBajadaQue(velocidad2); // true
 
-	velocidad1.tieneIgualVelocidadSubidaQue(velocidad2); // true
-	velocidad1.tieneMayorVelocidadSubidaQue(velocidad2); // false
-	velocidad1.tieneMenorVelocidadSubidaQue(velocidad2); // false
+	velocidad1.igualVelocidadSubidaQue(velocidad2); // true
+	velocidad1.mayorVelocidadSubidaQue(velocidad2); // false
+	velocidad1.menorVelocidadSubidaQue(velocidad2); // false
 
 ## Clase VelocidadRed
 
