@@ -16,9 +16,19 @@ VelocidadBajadaSubida (String  literalVelocidadRed)
 VelocidadBajadaSubida (float velocidadBajada, UnidadVelocidad unidad, float velocidadSubida, UnidadVelocidad unidad)
 
     VelocidadBajadaSubida velocidad1 = new VelocidadBajadaSubida(500, UnidadVelocidad.MEGABITS_SEGUNDO, 500, UnidadVelocidad.MEGABITS_SEGUNDO);
-    VelocidadBajadaSubida velocidad1 = new VelocidadBajadaSubida(1, UnidadVelocidad.GIGABITS_SEGUNDO, 500, UnidadVelocidad.MEGABITS_SEGUNDO);
+    VelocidadBajadaSubida velocidad2 = new VelocidadBajadaSubida(1, UnidadVelocidad.GIGABITS_SEGUNDO, 500, UnidadVelocidad.MEGABITS_SEGUNDO);
 
-#### Funciones de comparación (pendiente) 
+#### Funciones de comparación  
+
+La clase `VelocidadBajadaSubida` tiene funciones de comparacion de las velocidades de bajada y de subida.
+
+	velocidad1.tieneIgualVelocidadBajadaQue(velocidad2); // false
+	velocidad1.tieneMayorVelocidadBajadaQue(velocidad2); // false
+	velocidad1.tieneMenorVelocidadBajadaQue(velocidad2); // true
+
+	velocidad1.tieneIgualVelocidadSubidaQue(velocidad2); // true
+	velocidad1.tieneMayorVelocidadSubidaQue(velocidad2); // false
+	velocidad1.tieneMenorVelocidadSubidaQue(velocidad2); // false
 
 ## Clase VelocidadRed
 
