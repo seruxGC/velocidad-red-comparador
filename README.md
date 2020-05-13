@@ -40,9 +40,9 @@ VelocidadBajadaSubida (float velocidadBajada, UnidadVelocidad unidad)
 
 #### Funciones de comparación  
 
-	velocidad1.esIgual(velocidad2); // false
-	velocidad1.esMayor(velocidad2); // false
-	velocidad1.esMenor(velocidad2); // true
+	velocidad1.esIgualA(velocidad2); // false
+	velocidad1.esMayorQue(velocidad2); // false
+	velocidad1.esMenorQue(velocidad2); // true
 ___
  
  ###  Formato 1
