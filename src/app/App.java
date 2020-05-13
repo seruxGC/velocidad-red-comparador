@@ -25,13 +25,13 @@ public class App {
         VelocidadBajadaSubida velocidad1 = new VelocidadBajadaSubida("Acceso VPN IP FTTH0 100M/50M SIN VOZ");
         VelocidadBajadaSubida velocidad2 = new VelocidadBajadaSubida("Conexion NASA Fibra 10Mbps - 50Mbps");
 
-        velocidad1.tieneIgualVelocidadBajadaQue(velocidad2); // false
-        velocidad1.tieneMayorVelocidadBajadaQue(velocidad2); // true
-        velocidad1.tieneMenorVelocidadBajadaQue(velocidad2); // false
+        velocidad1.gualVelocidadBajadaQue(velocidad2); // false
+        velocidad1.mayorVelocidadBajadaQue(velocidad2); // true
+        velocidad1.menorVelocidadBajadaQue(velocidad2); // false
         
-        velocidad1.tieneIgualVelocidadSubidaQue(velocidad2); // true
-        velocidad1.tieneMayorVelocidadSubidaQue(velocidad2); // false
-        velocidad1.tieneMenorVelocidadSubidaQue(velocidad2); // false
+        velocidad1.igualVelocidadSubidaQue(velocidad2); // true
+        velocidad1.mayorVelocidadSubidaQue(velocidad2); // false
+        velocidad1.menorVelocidadSubidaQue(velocidad2); // false
 
 
 
