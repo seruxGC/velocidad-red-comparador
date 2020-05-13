@@ -70,9 +70,9 @@ Ejemplos de velocidades en este formato:    <br>
 
 **El regex que utiliza para identificar la velocidad en este formato es:** <br>
 
-    .*?(\\d+[\\,\\.]??\\d*?)\\s??(Kbps|Mbps|Gbps|K|M|G).*?(\\/|\\-).*?(\\d+[\\,\\.]??\\d?)\\s??(Kbps|Mbps|Gbps|K|M|G).*
+    .*?(\d+[\,\.]??\d*?)\s??(Kbps|Mbps|Gbps|K|M|G).*?(\/|\-).*?(\d+[\,\.]??\d?)\s??(Kbps|Mbps|Gbps|K|M|G).*
     
-Las combinaciones validas de este formato son muchas. Se puede probar diferentes variantes de este formato en:  https://regex101.com/r/ex8B2J/1 . El literal cumplira este formato si en los grupos 1 y 4 del regex están las velocidades, en los grupos 2 y 5 las unidades y en el grupo 3 el separador.
+Las combinaciones validas de este formato son muchas. Se puede probar diferentes variantes de este formato en:  https://regex101.com/r/Nq17H2/1 . El literal cumplira este formato si en los grupos 1 y 4 del regex están las velocidades, en los grupos 2 y 5 las unidades y en el grupo 3 el separador.
  
  ###  Formato 2
  
@@ -101,6 +101,6 @@ Ejemplos de velocidades en este formato:  <br>
 "150Gbps"  <br>
 {150 Gbps}  
 
-Las combinaciones validas de este formato son muchas. Se puede probar diferentes variantes de este formato en:  https://regex101.com/r/Ec3jnG/1 . El literal cumplira este formato si en el grupo 1 está la velocidad y en el grupo 2 está la unidad.
+Las combinaciones validas de este formato son muchas. Se puede probar diferentes variantes de este formato en:  https://regex101.com/r/GcGdiJ/1 . El literal cumplira este formato si en el grupo 1 está la velocidad y en el grupo 2 está la unidad.
 
 
