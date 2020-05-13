@@ -418,7 +418,6 @@ public class VelocidadBajadaSubidaTest {
 
         boolean resultado = velocidad1.mayorVelocidadBajadaQue(velocidad2);
         Assert.assertTrue(resultado);
-        ;
     }
 
     @Test
