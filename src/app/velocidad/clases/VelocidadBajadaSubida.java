@@ -60,27 +60,27 @@ public class VelocidadBajadaSubida {
         velocidadSubidaMegabits = VelocidadRedCalculo.getVelocidadEnMegabits(velocidadSubida, unidadSubida);
     }
 
-    public boolean tieneMayorVelocidadBajadaQue(VelocidadBajadaSubida velocidadComparada) {
+    public boolean mayorVelocidadBajadaQue(VelocidadBajadaSubida velocidadComparada) {
         return velocidadBajadaMegabits > velocidadComparada.getVelocidadBajadaMegabits();
     }
 
-    public boolean tieneIgualVelocidadBajadaQue(VelocidadBajadaSubida velocidadComparada) {
+    public boolean igualVelocidadBajadaQue(VelocidadBajadaSubida velocidadComparada) {
         return velocidadBajadaMegabits == velocidadComparada.getVelocidadBajadaMegabits();
     }
     
-    public boolean tieneMenorVelocidadBajadaQue(VelocidadBajadaSubida velocidadComparada) {
+    public boolean menorVelocidadBajadaQue(VelocidadBajadaSubida velocidadComparada) {
         return velocidadBajadaMegabits < velocidadComparada.getVelocidadBajadaMegabits();
     }
     
-    public boolean tieneMayorVelocidadSubidaQue(VelocidadBajadaSubida velocidadComparada) {
+    public boolean mayorVelocidadSubidaQue(VelocidadBajadaSubida velocidadComparada) {
         return velocidadSubidaMegabits > velocidadComparada.getVelocidadSubidaMegabits();
     }
 
-    public boolean tieneIgualVelocidadSubidaQue(VelocidadBajadaSubida velocidadComparada) {
+    public boolean igualVelocidadSubidaQue(VelocidadBajadaSubida velocidadComparada) {
         return velocidadSubidaMegabits == velocidadComparada.getVelocidadSubidaMegabits();
     }
 
-    public boolean tieneMenorVelocidadSubidaQue(VelocidadBajadaSubida velocidadComparada) {
+    public boolean menorVelocidadSubidaQue(VelocidadBajadaSubida velocidadComparada) {
         return velocidadSubidaMegabits < velocidadComparada.getVelocidadSubida();
     }
 
