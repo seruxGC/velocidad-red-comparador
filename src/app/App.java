@@ -11,34 +11,34 @@ public class App {
         VelocidadRed vel1 = new VelocidadRed("1 Kbps");
         VelocidadRed vel2 = new VelocidadRed("2 Mbps");
 
-        vel1.esMayor(vel2); // false 
-        vel1.esIgual(vel2); // false 
-        vel1.esMenor(vel2); // true
+        vel1.esMayorQue(vel2); // false 
+        vel1.esIgualA(vel2); // false 
+        vel1.esMenorQue(vel2); // true
 
        
         // VelocidadRed Constructor 2
         VelocidadRed velLiteral1 = new VelocidadRed(1, UnidadVelocidad.GIGABITS_CARACTER);
         VelocidadRed velLiteral2 = new VelocidadRed(50, UnidadVelocidad.MEGABITS_SEGUNDO);
 
-        velLiteral1.esIgual(velLiteral2); // false
-        velLiteral1.esMayor(velLiteral2); // true
-        velLiteral2.esMenor(velLiteral2); // false
-        
 
         // VelocidadBajadaSubida Constructor 1
-        VelocidadBajadaSubida velBaSu1 = new VelocidadBajadaSubida("Acceso VPN IP FTTH0 100M/50M SIN VOZ");
-        VelocidadBajadaSubida velBaSu2 = new VelocidadBajadaSubida("Conexion NASA Fibra 10Mbps - 1Mbps");
+        VelocidadBajadaSubida velocidad1 = new VelocidadBajadaSubida("Acceso VPN IP FTTH0 100M/50M SIN VOZ");
+        VelocidadBajadaSubida velocidad2 = new VelocidadBajadaSubida("Conexion NASA Fibra 10Mbps - 50Mbps");
 
-        velBaSu1.esMayor(velBaSu2); // true
-        velBaSu1.esIgual(velBaSu2); // false 
-        velBaSu1.esMenor(velBaSu2); // false
+        velocidad1.tieneIgualVelocidadBajadaQue(velocidad2); // false
+        velocidad1.tieneMayorVelocidadBajadaQue(velocidad2); // true
+        velocidad1.tieneMenorVelocidadBajadaQue(velocidad2); // false
+        
+        velocidad1.tieneIgualVelocidadSubidaQue(velocidad2); // true
+        velocidad1.tieneMayorVelocidadSubidaQue(velocidad2); // false
+        velocidad1.tieneMenorVelocidadSubidaQue(velocidad2); // false
+
+
 
        
         // VelocidadBajadaSubida Constructor 2
         VelocidadBajadaSubida velBaSu3 = new VelocidadBajadaSubida(150, UnidadVelocidad.GIGABITS_SEGUNDO, 100,
                 UnidadVelocidad.MEGABITS_SEGUNDO);
-
-        boolean result3 = velBaSu3.esMayor(velBaSu2); // true
 
 
 

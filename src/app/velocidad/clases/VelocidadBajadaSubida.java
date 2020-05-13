@@ -60,32 +60,30 @@ public class VelocidadBajadaSubida {
         velocidadSubidaMegabits = VelocidadRedCalculo.getVelocidadEnMegabits(velocidadSubida, unidadSubida);
     }
 
-    /**
-     * 
-     * @param velocidadBajadaSubidaComparada
-     * @return True si la velocidad de bajada y subida de la velocidad propia es
-     *         mayor que la comparada
-     */
-    public boolean esMayor(VelocidadBajadaSubida velocidadBajadaSubidaComparada) {
-        return velocidadBajadaMegabits > velocidadBajadaSubidaComparada.getVelocidadBajadaMegabits()
-                && velocidadSubidaMegabits > velocidadBajadaSubidaComparada.getVelocidadSubidaMegabits();
+    public boolean tieneMayorVelocidadBajadaQue(VelocidadBajadaSubida velocidadComparada) {
+        return velocidadBajadaMegabits > velocidadComparada.getVelocidadBajadaMegabits();
     }
 
-    public boolean esIgual(VelocidadBajadaSubida velocidadBajadaSubidaComparada) {
-        return velocidadBajadaMegabits == velocidadBajadaSubidaComparada.getVelocidadBajadaMegabits()
-                && velocidadSubidaMegabits == velocidadBajadaSubidaComparada.getVelocidadSubidaMegabits();
+    public boolean tieneIgualVelocidadBajadaQue(VelocidadBajadaSubida velocidadComparada) {
+        return velocidadBajadaMegabits == velocidadComparada.getVelocidadBajadaMegabits();
+    }
+    
+    public boolean tieneMenorVelocidadBajadaQue(VelocidadBajadaSubida velocidadComparada) {
+        return velocidadBajadaMegabits < velocidadComparada.getVelocidadBajadaMegabits();
+    }
+    
+    public boolean tieneMayorVelocidadSubidaQue(VelocidadBajadaSubida velocidadComparada) {
+        return velocidadSubidaMegabits > velocidadComparada.getVelocidadSubidaMegabits();
     }
 
-    /**
-     * 
-     * @param velocidadBajadaSubidaComparada
-     * @return rue si la velocidad de bajada y subida de la velocidad propia es
-     *         menor que la comparada
-     */
-    public boolean esMenor(VelocidadBajadaSubida velocidadBajadaSubidaComparada) {
-        return velocidadBajadaMegabits < velocidadBajadaSubidaComparada.getVelocidadBajadaMegabits()
-                && velocidadSubidaMegabits < velocidadBajadaSubidaComparada.getVelocidadSubidaMegabits();
+    public boolean tieneIgualVelocidadSubidaQue(VelocidadBajadaSubida velocidadComparada) {
+        return velocidadSubidaMegabits == velocidadComparada.getVelocidadSubidaMegabits();
     }
+
+    public boolean tieneMenorVelocidadSubidaQue(VelocidadBajadaSubida velocidadComparada) {
+        return velocidadSubidaMegabits < velocidadComparada.getVelocidadSubida();
+    }
+
 
     /**
      * Comprueba que la velocidad cumple el patron

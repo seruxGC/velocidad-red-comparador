@@ -14,7 +14,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("2 Kbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("1 Kbps");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -25,7 +25,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("2 Gbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("1 Gbps");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -36,7 +36,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("1001 Kbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("1 Mbps");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -47,7 +47,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("1000001 Kbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("1 Gbps");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -58,7 +58,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("1 Mbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("999 Kbps");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -69,7 +69,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("1001 Mbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("1 Gbps");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -80,7 +80,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("1,5 Kbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("1 Kbps");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -91,7 +91,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("1.5 Kbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("1 Kbps");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -102,7 +102,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("1.1 Mbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("1000 Kbps");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -113,7 +113,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("1,1 Gbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("1000 Mbps");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -124,7 +124,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("1,1-Gbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("1000-Mbps");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -135,7 +135,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("1,1 - Gbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("1000 - Mbps");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -146,7 +146,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("[1,1-Gbps]");
         VelocidadRed velocidadRed2 = new VelocidadRed("[1000-Mbps]");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -157,7 +157,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("[1,1 - Gbps]");
         VelocidadRed velocidadRed2 = new VelocidadRed("[1000 - Mbps]");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -168,7 +168,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("{1,1-Gbps}");
         VelocidadRed velocidadRed2 = new VelocidadRed("{1000-Mbps}");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -179,7 +179,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("{1,1 - Gbps}");
         VelocidadRed velocidadRed2 = new VelocidadRed("{1000 - Mbps}");
 
-        boolean resultado = velocidadRed1.esMayor(velocidadRed2);
+        boolean resultado = velocidadRed1.esMayorQue(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -190,7 +190,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("{1,1 - Gbps}");
         VelocidadRed velocidadRed2 = new VelocidadRed("{1.1 - Gbps}");
 
-        boolean resultado = velocidadRed1.esIgual(velocidadRed2);
+        boolean resultado = velocidadRed1.esIgualA(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -201,7 +201,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("100 - Mbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("100 - Mbps");
 
-        boolean resultado = velocidadRed1.esIgual(velocidadRed2);
+        boolean resultado = velocidadRed1.esIgualA(velocidadRed2);
         Assert.assertTrue(resultado);
     }
 
@@ -212,7 +212,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("100 Mbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("100 Kbps");
 
-        boolean resultado = velocidadRed1.esIgual(velocidadRed2);
+        boolean resultado = velocidadRed1.esIgualA(velocidadRed2);
         Assert.assertFalse(resultado);
     }
 
@@ -223,7 +223,7 @@ public class VelocidadRedTest {
         VelocidadRed velocidadRed1 = new VelocidadRed("101 Mbps");
         VelocidadRed velocidadRed2 = new VelocidadRed("100 Mbps");
 
-        boolean resultado = velocidadRed1.esIgual(velocidadRed2);
+        boolean resultado = velocidadRed1.esIgualA(velocidadRed2);
         Assert.assertFalse(resultado);
     }
 

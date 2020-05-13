@@ -44,15 +44,15 @@ public class VelocidadRed {
         velocidadMegabits = VelocidadRedCalculo.getVelocidadEnMegabits(velocidad, unidad);
     }
 
-    public boolean esMayor(VelocidadRed velocidadRed) {
+    public boolean esMayorQue(VelocidadRed velocidadRed) {
         return velocidadMegabits > velocidadRed.getVelocidadMegabits();
     }
 
-    public boolean esIgual(VelocidadRed velocidadRed) {
+    public boolean esIgualA(VelocidadRed velocidadRed) {
         return velocidadMegabits == velocidadRed.getVelocidadMegabits();
     }
 
-    public boolean esMenor(VelocidadRed velocidadRed) {
+    public boolean esMenorQue(VelocidadRed velocidadRed) {
         return velocidadMegabits < velocidadRed.getVelocidadMegabits();
     }
 
