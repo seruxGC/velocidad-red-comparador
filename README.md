@@ -73,23 +73,6 @@ Ejemplos de velocidades en este formato:    <br>
     .*?(\\d+[\\,\\.]??\\d*?)\\s??(Kbps|Mbps|Gbps|K|M|G).*?(\\/|\\-).*?(\\d+[\\,\\.]??\\d?)\\s??(Kbps|Mbps|Gbps|K|M|G).*
     
 Las combinaciones validas de este formato son muchas. Se puede probar diferentes variantes de este formato en:  https://regex101.com/r/ex8B2J/1 . El literal cumplira este formato si en los grupos 1 y 4 del regex están las velocidades, en los grupos 2 y 5 las unidades y en el grupo 3 el separador.
-
-**Ejemplo de uso**
-    
-    VelocidadBajadaSubida velocidad1 = new VelocidadBajadaSubida("VPN IP FTTH0 500Mbps-500Mbps");
-    
-    VelocidadBajadaSubida velocidad2 = new VelocidadBajadaSubida("Fibra oro 1 Gbps - 500 Mbps");
-    
-    velocidad1.esMayor(velocidad2); // false
-    velocidad1.esIgual(velocidad2); // false
-    velocidad1.esMenor(velocidad2); // false
-    
- Como el algoritmo que se utiliza para la comparación de las velocidades en este formato ignora los literales que no correspondan a la velocidad de la red se pueden comparar literales mientras la velocidad tenga este formato.
- 
-    VelocidadRedComparador.compara("VPN IP FTTH 2.0 [250Mbps-250Mbps]", "200M-200M"); // true
-    
-    VelocidadRedComparador.compara("VPN IP 100 Gbps-1000 Gbps", "Adsl 200 Gbps-200 Gbps Fibra 2.0"); // false
- 
  
  ###  Formato 2
  
@@ -119,19 +102,5 @@ Ejemplos de velocidades en este formato:  <br>
 {150 Gbps}  
 
 Las combinaciones validas de este formato son muchas. Se puede probar diferentes variantes de este formato en:  https://regex101.com/r/Ec3jnG/1 . El literal cumplira este formato si en el grupo 1 está la velocidad y en el grupo 2 está la unidad.
-
-**Comparacion**
-Devuelve  `true` si la *velocidad1*  es mayor que la de la *velocidad2* y `false` en caso contrario.
-
-Ejemplos:
-
-    VelocidadRedComparador.compara("150 Mbps", "100 Mbps"); // True
-    
-    VelocidadRedComparador.compara("1 Gbps", "500 Mbps); // true
-
-    VelocidadRedComparador.compara("{1Gbps}", "2 Gbps); // false
-
-    VelocidadRedComparador.compara("[1 Gbps]", "[1,5 Gbps]; // false
-
 
 
