@@ -1,4 +1,4 @@
-package app.velocidad.comparador.config;
+package app.velocidad.constantes;
 
 public enum UnidadVelocidad {
 

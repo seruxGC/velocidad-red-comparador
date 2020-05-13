@@ -1,33 +1,51 @@
 package app;
 
+import app.velocidad.clases.VelocidadBajadaSubida;
+import app.velocidad.clases.VelocidadRed;
+import app.velocidad.constantes.UnidadVelocidad;
+
 public class App {
     public static void main(String[] args) {
 
-        VelocidadRed velocidad1 = new VelocidadRed("100 Mbps");
-        VelocidadRed velocidad2 = new VelocidadRed("1 Gbps");
+        // VelocidadRed Constructor 1
+        VelocidadRed vel1 = new VelocidadRed("1 Kbps");
+        VelocidadRed vel2 = new VelocidadRed("2 Mbps");
 
-        boolean result1 = velocidad1.esIgual(velocidad2); // False
-        boolean result2 = velocidad1.esMayor(velocidad1); // False
-        boolean result3 = velocidad1.esMenor(velocidad2); // True
+        vel1.esMayor(vel2); // false 
+        vel1.esIgual(vel2); // false 
+        vel1.esMenor(vel2); // true
+
+       
+        // VelocidadRed Constructor 2
+        VelocidadRed velLiteral1 = new VelocidadRed(1, UnidadVelocidad.GIGABITS_CARACTER);
+        VelocidadRed velLiteral2 = new VelocidadRed(50, UnidadVelocidad.MEGABITS_SEGUNDO);
+
+        velLiteral1.esIgual(velLiteral2); // false
+        velLiteral1.esMayor(velLiteral2); // true
+        velLiteral2.esMenor(velLiteral2); // false
+        
+
+        // VelocidadBajadaSubida Constructor 1
+        VelocidadBajadaSubida velBaSu1 = new VelocidadBajadaSubida("Acceso VPN IP FTTH0 100M/50M SIN VOZ");
+        VelocidadBajadaSubida velBaSu2 = new VelocidadBajadaSubida("Conexion NASA Fibra 10Mbps - 1Mbps");
+
+        velBaSu1.esMayor(velBaSu2); // true
+        velBaSu1.esIgual(velBaSu2); // false 
+        velBaSu1.esMenor(velBaSu2); // false
+
+       
+        // VelocidadBajadaSubida Constructor 2
+        VelocidadBajadaSubida velBaSu3 = new VelocidadBajadaSubida(150, UnidadVelocidad.GIGABITS_SEGUNDO, 100,
+                UnidadVelocidad.MEGABITS_SEGUNDO);
+
+        boolean result3 = velBaSu3.esMayor(velBaSu2); // true
 
 
 
-        VelocidadRed velocidad3 = new VelocidadRed("Acceso VPN IP FTTH0 1000M/1000M SIN VOZ");
-        VelocidadRed velocidad4 = new VelocidadRed("ADSL premium 1Gbps - 1Gbps empresas");
-
-        boolean result4 = velocidad3.esIgual(velocidad4); // True
-        boolean result5 = velocidad3.esMayor(velocidad4); // False
-        boolean result6 = velocidad3.esMenor(velocidad4); // False
-
-
-
-
-        System.out.println(result1);
-        System.out.println(result2);
-        System.out.println(result3);
-        System.out.println(result4);
-        System.out.println(result5);
-        System.out.println(result6);
+        System.out.println(velLiteral1.getLiteralVelocidad());
+        System.out.println(velLiteral2.getLiteralVelocidad());
+        System.out.println(velBaSu3.getLiteralVelocidad());
+        System.out.println(velLiteral2.getLiteralVelocidad());
 
     }
 }

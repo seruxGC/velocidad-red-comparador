@@ -1,6 +1,6 @@
-package app.velocidad.calculo;
+package app.velocidad.util;
 
-import app.velocidad.comparador.config.UnidadVelocidad;
+import app.velocidad.constantes.UnidadVelocidad;
 
 public class VelocidadRedCalculo {
 
